@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nothingfallsthrough.com/sitemap.xml
