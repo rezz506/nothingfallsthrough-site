@@ -1,0 +1,44 @@
+# Nothing Falls Through
+
+> An AI assistant for small business owners, set up and managed for you. Jake Jones builds each assistant on Claude (made by Anthropic), runs it on a small private server rented in the client's name, connects it to the email, calendar and software the business already uses, and keeps it running. Based in Middle Tennessee. Running since January 2026, first in Jake's own family's industrial equipment company.
+
+## Who it is for
+
+Owner-operated companies of roughly five to fifty people, where the owner sells, quotes and answers the email on top of running the place: contractors and trades, machine shops and manufacturers, equipment dealers and distributors, industrial sales reps, service companies, real estate and insurance offices, consultants and small agencies, studios and family businesses.
+
+It is not for replacing staff, for sending everything to customers without ever looking, or for working around another company's rules.
+
+## What the assistant does
+
+- Manages email: sorts the noise, flags anything with a date in it, sends deadline requests to the owner's phone the same hour.
+- Keeps follow-ups going on the owner's schedule and stops the moment someone replies.
+- Drafts customer quotes in the business's own format when a supplier's price arrives, and leaves them in Drafts for the owner to send.
+- Checks the customer list before every automated send, so existing accounts are not treated like strangers.
+- Drafts recurring paperwork: expense reports, weekly activity summaries, the Monday numbers.
+- Keeps notes of promises, prices and visits on the client's own server.
+
+Every job starts in approval mode. The owner switches approval off job by job when comfortable.
+
+## Connections
+
+Outlook, Microsoft 365, Gmail, Google Workspace, Google or Outlook calendar, QuickBooks, Zoho CRM, HubSpot, LinkedIn (drafts and tracking), Discord, Slack, Teams, WhatsApp, phone alerts, Google Drive, OneDrive, Excel, Google Sheets, Apollo. If a service offers a proper way to connect, it can connect.
+
+## Ownership and privacy
+
+The server, the Claude subscription and the private network are in the client's name. Records live on the client's server. The Claude setting that allows conversations to be used for training is turned off on day one. Jake never asks for passwords.
+
+## Pricing (fixed, written down before any work starts)
+
+- Personal assistant: $1,250 one-time setup, then $200 a month care from day 31. The first 30 days of tuning are included. Care is month to month.
+- Business assistant (the full system): quoted at a fixed price after a call, before any work starts.
+- Outside costs the client pays directly: a Claude subscription at $100 a month, and a small Linux server at roughly $7 to $15 a month (as of October 2026). An existing server works if it is Linux with at least 4 GB of memory and root access.
+- Also available: a one-page business website, fixed price quoted after the call.
+
+## How it starts
+
+A 30-minute call, then the assistant interviews the owner, about a week of setup, a week of dial-in, and it runs from about day 15.
+
+## Contact
+
+- Email: hello@nothingfallsthrough.com (reply within one business day)
+- Website: https://nothingfallsthrough.com/
