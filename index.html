@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="An AI assistant for small business owners, set up and managed for you. It manages your email, keeps follow-ups going, drafts quotes and puts deadlines on your phone. Runs on your own private server with Claude AI. Fixed prices, no contracts. Built by a Tennessee business owner who runs his own company this way.">
+<meta name="description" content="An AI assistant for small business owners, set up and managed for you. It reads your email, keeps follow-ups going, drafts quotes and puts deadlines on your phone. Fixed prices, no long-term contract. Running in a Tennessee equipment company since January 2026.">
 <link rel="canonical" href="https://nothingfallsthrough.com/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nothing Falls Through">
-<meta property="og:title" content="Nothing Falls Through">
+<meta property="og:title" content="AI Assistant for Small Business Owners | Nothing Falls Through">
 <meta property="og:description" content="An AI assistant for small business owners, set up and managed for you. Email, follow-ups, quotes and deadlines handled on your own private server.">
 <meta property="og:url" content="https://nothingfallsthrough.com/">
 <meta property="og:image" content="https://nothingfallsthrough.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#0F6E56">
+<meta name="theme-color" content="#0B1016">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"ProfessionalService","@id":"https://nothingfallsthrough.com/#business","name":"Nothing Falls Through","url":"https://nothingfallsthrough.com/","email":"hello@nothingfallsthrough.com","description":"AI assistant setup and management for small business owners. Email management, follow-up automation, quoting, deadline alerts and recurring reports, running on the client's own private server with Claude AI.","founder":{"@type":"Person","name":"Jake Jones"},"areaServed":"US","address":{"@type":"PostalAddress","addressRegion":"TN","addressCountry":"US"},"priceRange":"$1,250 setup and up","knowsAbout":["AI assistant for small business","AI automation for small business","managed AI services","AI email assistant","follow-up automation","Claude AI setup","small business automation"]},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"What is an AI assistant, in plain terms?","acceptedAnswer":{"@type":"Answer","text":"A program that can read, write and keep notes, connected to your email, calendar and files so it can act on them. This one is set up around your business, keeps its notes, and has a person managing it."}},
-{"@type":"Question","name":"Which AI is it?","acceptedAnswer":{"@type":"Answer","text":"Claude, made by Anthropic, running on a server you own with a subscription in your name. The setting that lets conversations train their models is turned off on day one."}},
+{"@type":"Question","name":"Which AI is it?","acceptedAnswer":{"@type":"Answer","text":"Claude, made by Anthropic, running on a server rented in your name with a subscription in your name. The setting that lets conversations train their models is turned off on day one."}},
 {"@type":"Question","name":"Do I need to be good with computers?","acceptedAnswer":{"@type":"Answer","text":"No. If you can send a text message, you can use it. There is nothing to install and nothing to configure."}},
 {"@type":"Question","name":"What does it connect to?","acceptedAnswer":{"@type":"Answer","text":"Whatever you run the business on, as long as it offers a proper way to connect. Outlook or Gmail, Microsoft 365 or Google Workspace, your calendar, your CRM, QuickBooks, your files, your chat app."}},
 {"@type":"Question","name":"Can I use my own server?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any Linux server with at least 4 GB of memory and root access works, whether one you already rent or a provider you prefer. Otherwise I recommend one and you buy it in your name."}},
@@ -28,7 +28,7 @@
 {"@type":"Question","name":"Will it send things without asking?","acceptedAnswer":{"@type":"Answer","text":"Not until you say so. Every job starts in approval mode. When you are comfortable, routine jobs can run on their own and anything going to a customer keeps your approval."}}
 ]}]}
 </script>
-<title>Nothing Falls Through | AI Assistant for Small Business Owners, Set Up and Managed for You</title>
+<title>AI Assistant for Small Business Owners | Nothing Falls Through</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
@@ -181,7 +181,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .alert .ap{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.8rem;color:var(--amber-ink);background:var(--amber)}
 .alert .ap.m{background:var(--mint);color:#04120C}
 .alert b{display:block;font-size:.92rem}
-.alert span{font-size:.9rem;color:var(--ink-2);line-height:1.35}
+.alert span{display:block;font-size:.9rem;color:var(--ink-2);line-height:1.35}
 .alert time{font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
 .chat{display:grid;gap:.5rem;margin-top:.3rem}
 .msg{max-width:88%;padding:.6rem .8rem;border-radius:14px;font-size:.92rem;line-height:1.35}
@@ -262,6 +262,44 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .copy{font:inherit;font-size:1rem;font-weight:600;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.7rem 1rem;cursor:pointer}
 .copy[data-done="1"]{border-color:var(--mint);color:var(--mint)}
 
+/* morning demo: a scripted replay, reuses the .today panel and .phone screen */
+.picker{display:flex;flex-wrap:wrap;gap:.6rem}
+.picker button{font:inherit;font-size:1.02rem;font-weight:600;color:var(--ink-2);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:.6rem 1.1rem;cursor:pointer;transition:background .15s ease,color .15s ease}
+.picker button:hover{color:var(--ink);background:var(--panel-2)}
+.picker button[aria-pressed="true"]{color:var(--amber-ink);background:var(--amber);border-color:var(--amber)}
+.demo{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.demo .phone{position:sticky;top:5.5rem;max-width:340px}
+.demo .screen{min-height:460px;align-content:start}
+@media (max-width:900px){.demo{grid-template-columns:1fr}.demo .phone{display:none}}
+.replay header .ctl{display:flex;gap:.5rem;align-items:center}
+.replay header button{font:inherit;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:6px;padding:.35rem .6rem;cursor:pointer}
+.replay header button:hover{background:rgba(255,255,255,.1)}
+.replay ol{min-height:20rem}
+.replay .what{display:grid;gap:.35rem}
+.replay .src{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.replay .came{color:var(--ink-2);font-style:italic;border-left:2px solid var(--line);padding-left:.7rem}
+.replay .did{color:var(--ink)}
+.replay .chip{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+.replay .ask{margin-top:.4rem;padding:.85rem .95rem;border:1px solid rgba(242,179,61,.45);border-radius:10px;background:rgba(242,179,61,.07);display:grid;gap:.65rem}
+.replay .ask b{font-family:var(--display);font-weight:700}
+.replay .ask .btns{gap:.5rem}
+.replay .ask button{font:inherit;font-size:1rem;font-weight:600;border-radius:8px;padding:.6rem 1rem;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--ink)}
+.replay .ask button.yes{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.replay li.empty,.replay li.sum{display:block}
+.replay li.empty{color:var(--ink-3);padding-block:2rem}
+.replay li.sum{background:rgba(61,220,151,.05)}
+.replay .sum ul{list-style:none;margin:.7rem 0;padding:0;display:grid;gap:.45rem;color:var(--ink-2)}
+.replay .sum ul li{display:grid;grid-template-columns:auto 1fr;gap:.6rem;padding:0;border:0;font-size:1rem}
+.replay .sum ul li::before{content:"";width:16px;height:16px;border-radius:50%;margin-top:.2rem;background:rgba(61,220,151,.15);border:1px solid rgba(61,220,151,.5);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%233DDC97' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:100%}
+.replay .sum .you{color:var(--ink-2);font-size:1rem}
+.replay .sum .zero{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-0.02em;color:var(--mint);margin-top:.5rem}
+.replay li.enter{animation:rise .45s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.demo .alert.enter{animation:rise .35s ease both}
+.demo .phone.buzz{animation:buzz .45s ease}
+@keyframes buzz{0%,100%{transform:none}20%{transform:translateX(-3px) rotate(-.6deg)}40%{transform:translateX(3px) rotate(.6deg)}60%{transform:translateX(-2px)}80%{transform:translateX(2px)}}
+@media (prefers-reduced-motion:reduce){.replay li.enter,.demo .alert.enter,.demo .phone.buzz{animation:none}.picker button{transition:none}}
+
 footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between}
 </style>
 </head>
@@ -274,7 +312,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   <nav aria-label="Sections">
     <a href="#does">What it does</a>
     <a href="#connects">Connections</a>
-    <a href="#work">See it work</a>
+    <a href="#demo">Watch a morning</a>
     <a href="#how">How it starts</a>
     <a href="#pricing">Pricing</a>
     <a href="#about">About</a>
@@ -378,7 +416,37 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band lift" id="does">
+<section class="band lift" id="demo">
+  <div class="wrap stack" style="gap:1.75rem">
+    <div>
+      <div class="eyebrow">Watch a morning</div>
+      <h2>The same kind of morning, with the assistant on duty</h2>
+      <p class="lede" style="margin-top:1rem">Pick the business closest to yours and watch a Tuesday morning play out. When a draft is ready, it stops and waits for your OK, the way the real one does.</p>
+    </div>
+    <div class="picker" role="group" aria-label="Pick a business">
+      <button type="button" data-k="contractor" aria-pressed="true">Contractor or trades</button>
+      <button type="button" data-k="distributor" aria-pressed="false">Distributor or dealer</button>
+      <button type="button" data-k="shop" aria-pressed="false">Machine shop</button>
+      <button type="button" data-k="service" aria-pressed="false">Service company</button>
+    </div>
+    <div class="demo">
+      <div class="today replay">
+        <header><b id="dclock">Tuesday, 6:30 AM</b><span class="ctl"><span class="live" id="dstate"><i></i>ready</span><button type="button" id="dplay">Play</button><button type="button" id="dreset">Restart</button></span></header>
+        <ol id="dfeed" aria-live="polite"><li class="empty">Press Play to watch the morning.</li></ol>
+        <footer>A replay, not a live AI. The businesses and names are made up. The jobs are the kinds it does in my own company every day.</footer>
+      </div>
+      <div class="phone" id="dphone" aria-hidden="true">
+        <div class="screen">
+          <div class="clock" id="dpclock">6:30</div>
+          <div class="date">Tuesday</div>
+          <div class="chat" id="dnotes"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="does">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
       <div class="eyebrow">What it does</div>
@@ -396,7 +464,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band" id="work">
+<section class="band lift" id="work">
   <div class="wrap work">
     <div class="phone" aria-label="Example of the assistant on a phone">
       <div class="screen">
@@ -423,7 +491,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band lift" id="for">
+<section class="band" id="for">
   <div class="wrap forwho">
     <div class="stack">
       <div class="eyebrow">Who it's for</div>
@@ -444,7 +512,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band" id="different">
+<section class="band lift" id="different">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
       <div class="eyebrow">Why it's not another piece of software</div>
@@ -460,7 +528,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band lift" id="how">
+<section class="band" id="how">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
       <div class="eyebrow">How it starts</div>
@@ -476,7 +544,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band" id="pricing">
+<section class="band lift" id="pricing">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
       <div class="eyebrow">Pricing</div>
@@ -524,7 +592,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band lift" id="about">
+<section class="band" id="about">
   <div class="wrap about">
     <div class="card">
       <div class="photo" aria-label="Photo of Jake Jones"><span>JJ</span></div>
@@ -549,7 +617,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band">
+<section class="band lift">
   <div class="wrap stack" style="gap:2rem">
     <div>
       <div class="eyebrow">Questions owners ask</div>
@@ -639,6 +707,139 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   size(); window.addEventListener('resize',size);
   if(reduce){for(var j=0;j<12;j++){var x=Math.random()*W;items.push({x:x,y:netY+Math.sin((x/W)*Math.PI)*22,vy:0,r:2,caught:1,born:0});}frame(performance.now()+1);}
   else{for(var j2=0;j2<10;j2++){spawn();items[items.length-1].y=Math.random()*netY;}requestAnimationFrame(frame);}
+})();
+</script>
+<script>
+(function(){
+  /* morning demo: scripted replay. Each step: t, src (what came in), q (its words), did (what the assistant did), tag, phone, ask (pauses for the visitor) */
+  var ASK_NO='Held in Drafts. It goes on tomorrow’s brief so it doesn’t sit.';
+  var S={
+    contractor:{steps:[
+      {t:'6:45 AM',src:'Morning brief',did:'Sent to your phone. Four estimates are open, the Parker kitchen bid expires Thursday, and the lumber yard still owes you a price.',tag:'ok',phone:{h:'Morning brief',b:'4 open estimates. Parker bid expires Thursday.'}},
+      {t:'7:20 AM',src:'Email from the lumber yard',q:'Updated price sheet attached. Good through the 15th.',did:'Repriced the Parker estimate with your usual markup. It is in Drafts.',phone:{h:'Needs your OK',b:'Parker estimate repriced. Send it?'},ask:{q:'Send the updated estimate to the Parkers?',yes:'Sent at 7:24 from your email. A follow-up is set for Monday if they don’t answer.'}},
+      {t:'8:05 AM',src:'Follow-ups',did:'Nine went to last month’s estimate requests. Two names were skipped because they are already your customers.',tag:'ok'},
+      {t:'9:10 AM',src:'Email from Maria Alvarez',q:'Can someone look at the leak before Friday? The insurance adjuster comes Monday.',did:'Deadline found. Sent to your phone with her address and number.',tag:'urgent',phone:{h:'Deadline in an email',b:'Alvarez leak needs a visit before Friday.'}},
+      {t:'9:55 AM',src:'Reply from Dan Kowalski',q:'We went with another company. Thanks for the quick bid.',did:'His remaining follow-ups were cancelled, and the reason is noted on his record.',tag:'held',tt:'stopped'},
+      {t:'10:40 AM',src:'Email from the city permit office',q:'Inspection window Wednesday 8 to 12. Please confirm by 3 PM tomorrow.',did:'Tentative hold put on your calendar, with a reminder at 1 PM tomorrow to confirm.',tag:'ok',phone:{h:'Reminder set',b:'Confirm Wednesday’s inspection by 3 PM tomorrow.'}}
+    ],sum:['2 deadlines put on your phone','1 estimate repriced with your markup','9 follow-ups out, 2 customers skipped','1 follow-up stopped because he answered']},
+    distributor:{steps:[
+      {t:'6:52 AM',src:'Morning brief',did:'Sent to your phone. Three open quotes need an answer this week, one expires Friday, and two suppliers still owe you pricing.',tag:'ok',phone:{h:'Morning brief',b:'3 open quotes. One expires Friday.'}},
+      {t:'7:40 AM',src:'Email from a supplier',q:'Pricing on the two gearmotors you asked about. Lead time six weeks.',did:'Customer quote built in your format with your usual markup. It is in Drafts.',phone:{h:'Needs your OK',b:'Gearmotor quote for Greg is ready. Send it?'},ask:{q:'Send the gearmotor quote to Greg at the plant?',yes:'Sent at 7:43 from your email. A follow-up is set for Thursday.'}},
+      {t:'8:05 AM',src:'Prospect emails',did:'Fourteen went out. Every name was checked against your customer list first, and three were skipped.',tag:'ok'},
+      {t:'9:20 AM',src:'Email from a customer’s purchasing desk',q:'We need the replacement belts by the 20th or the line goes down.',did:'Deadline found. Sent to your phone with the part numbers from their last order.',tag:'urgent',phone:{h:'Deadline in an email',b:'Belts needed by the 20th or their line is down.'}},
+      {t:'10:05 AM',src:'Reply from a prospect',q:'Yes, send me pricing on the smaller units.',did:'A real reply, so the automatic follow-ups to him stopped and it went straight to your phone.',tag:'urgent',tt:'hot',phone:{h:'Hot reply',b:'Prospect wants pricing on the smaller units.'}},
+      {t:'11:15 AM',src:'Card statement posted',did:'Expense report drafted from the statement. It is due on the 1st.',tag:'ok'}
+    ],sum:['1 quote built from the supplier’s price','14 prospect emails out, 3 customers skipped','1 deadline and 1 hot reply on your phone','Expense report drafted before the 1st']},
+    shop:{steps:[
+      {t:'6:50 AM',src:'Morning brief',did:'Sent to your phone. Two RFQs are waiting on a price, job 2208 ships Friday, and material for job 2214 isn’t confirmed yet.',tag:'ok',phone:{h:'Morning brief',b:'2 RFQs waiting. Job 2208 ships Friday.'}},
+      {t:'7:30 AM',src:'Email from the steel supplier',q:'Bar stock for job 2214 ships tomorrow.',did:'Noted on the job. The ship date still holds, so there was nothing to bother you with.',tag:'ok',tt:'noted'},
+      {t:'8:15 AM',src:'Email from a new customer',q:'Please quote 500 pieces per the attached drawing. Need it by Thursday.',did:'RFQ logged with the Thursday due date and the drawing filed with it. Sent to your phone.',tag:'urgent',phone:{h:'New RFQ, due Thursday',b:'500 pieces, drawing attached.'}},
+      {t:'9:00 AM',src:'Email from the plating vendor',q:'Plating on the job 2208 brackets is $1.85 each.',did:'Customer quote for the brackets drafted with your usual markup. It is in Drafts.',phone:{h:'Needs your OK',b:'Bracket quote for job 2208 is ready. Send it?'},ask:{q:'Send the bracket quote to the customer?',yes:'Sent at 9:03 from your email. A follow-up is set for next Tuesday.'}},
+      {t:'10:00 AM',src:'Follow-ups',did:'Twelve went to companies that asked for your capabilities sheet. Two were skipped: one is a customer, one replied yesterday.',tag:'ok'},
+      {t:'11:10 AM',src:'Email from the job 2208 customer',q:'Can we push delivery to Monday?',did:'Flagged for you. Nothing changes on the schedule until you answer.',tag:'urgent',phone:{h:'Schedule change request',b:'Job 2208 customer asks to deliver Monday.'}}
+    ],sum:['1 RFQ logged with its due date','1 quote drafted from the vendor’s price','12 follow-ups out, 2 skipped','1 schedule change flagged before anything moved']},
+    service:{steps:[
+      {t:'6:40 AM',src:'Morning brief',did:'Sent to your phone. Seven jobs on today’s schedule, two maintenance contracts renew this month, and three quotes are still waiting on an answer.',tag:'ok',phone:{h:'Morning brief',b:'7 jobs today. 2 renewals due this month.'}},
+      {t:'7:15 AM',src:'Email from a property manager',q:'Unit 4B has no heat and the tenant has a baby. Can someone come today?',did:'Urgent. Sent to your phone right away with the address.',tag:'urgent',phone:{h:'Urgent request',b:'No heat at unit 4B. Wants someone today.'}},
+      {t:'8:00 AM',src:'Contract renewals',did:'Renewal reminders drafted for the two contracts that come up this month. They are in Drafts.',phone:{h:'Needs your OK',b:'2 renewal reminders ready. Send them?'},ask:{q:'Send the two renewal reminders?',yes:'Both sent at 8:02 from your email. Replies come straight to you.'}},
+      {t:'9:05 AM',src:'Follow-ups',did:'Ten went to last month’s quote requests. One was skipped because they are already a customer.',tag:'ok'},
+      {t:'9:50 AM',src:'Reply from Sarah Lin',q:'Got your quote. Could you do the 10th instead of the 8th?',did:'She replied, so her automatic follow-up was cancelled and the question went to your phone.',tag:'held',tt:'stopped',phone:{h:'Customer replied',b:'Sarah Lin asks for the 10th instead of the 8th.'}},
+      {t:'11:00 AM',src:'Weekly summary',did:'This week’s numbers for the team drafted: quotes out, replies in, follow-ups sent.',tag:'ok'}
+    ],sum:['1 urgent call on your phone within minutes','2 renewal reminders ready','10 follow-ups out, 1 customer skipped','1 follow-up stopped because she answered']}
+  };
+  var TT={ok:'done',urgent:'alert',held:'held'};
+  var feed=document.getElementById('dfeed'); if(!feed) return;
+  var clock=document.getElementById('dclock'),pclock=document.getElementById('dpclock'),notes=document.getElementById('dnotes'),phone=document.getElementById('dphone');
+  var stateEl=document.getElementById('dstate'),playBtn=document.getElementById('dplay'),resetBtn=document.getElementById('dreset');
+  var picks=document.querySelectorAll('.picker button');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var key='contractor',i=0,playing=false,waiting=false,held=false,done=false,timer=null;
+
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function setState(s){stateEl.lastChild.textContent=s;}
+  function setClock(t){clock.textContent='Tuesday, '+t;pclock.textContent=t.replace(/ [AP]M$/,'');}
+  function tag(cls,text){return el('span','tag '+cls,text);}
+  function buzz(h,b){
+    var a=el('div','alert enter'),ap=el('div','ap m','N'),d=el('div');
+    d.appendChild(el('b',null,h));d.appendChild(el('span',null,b));
+    a.appendChild(ap);a.appendChild(d);a.appendChild(el('time',null,'now'));
+    var prev=notes.querySelectorAll('.alert time');for(var k=0;k<prev.length;k++)prev[k].textContent='';
+    notes.insertBefore(a,notes.firstChild);
+    while(notes.children.length>4)notes.removeChild(notes.lastChild);
+    phone.classList.remove('buzz');void phone.offsetWidth;phone.classList.add('buzz');
+  }
+  function schedule(ms){clearTimeout(timer);timer=setTimeout(next,ms);}
+  function setPlaying(p){
+    playing=p;
+    playBtn.textContent=done?'Replay':(p?'Pause':'Play');
+    setState(done?'morning done':waiting?'waiting on you':p?'replay running':'paused');
+    if(p&&!waiting)schedule(i===0?500:2600);else clearTimeout(timer);
+  }
+  function reset(k){
+    clearTimeout(timer);key=k;i=0;waiting=false;held=false;done=false;
+    feed.innerHTML='';notes.innerHTML='';setClock(S[k].steps[0].t.replace(/^\d+:\d+/,'6:30'));
+    for(var n=0;n<picks.length;n++)picks[n].setAttribute('aria-pressed',picks[n].dataset.k===k?'true':'false');
+  }
+  function render(s){
+    var li=el('li','enter'),w=el('div','what'),ph=feed.querySelector('.empty');
+    if(ph)feed.removeChild(ph);
+    li.appendChild(el('time',null,s.t));
+    w.appendChild(el('span','src',s.src));
+    if(s.q)w.appendChild(el('span','came','“'+s.q+'”'));
+    w.appendChild(el('span','did',s.did));
+    if(s.phone)w.appendChild(el('span','chip','→ On your phone'));
+    li.appendChild(w);
+    setClock(s.t);
+    if(s.phone)buzz(s.phone.h,s.phone.b);
+    if(s.ask){
+      var t=tag('held','your call');li.appendChild(t);
+      var box=el('div','ask'),bt=el('div','btns'),y=el('button','yes','Approve and send'),no=el('button','no','Hold it');
+      y.type=no.type='button';
+      box.appendChild(el('b',null,s.ask.q));bt.appendChild(y);bt.appendChild(no);box.appendChild(bt);w.appendChild(box);
+      function choose(ok){
+        held=!ok;w.replaceChild(el('span','did',ok?s.ask.yes:ASK_NO),box);
+        t.className='tag '+(ok?'ok':'held');t.textContent=ok?'sent':'held';
+        buzz(ok?'Sent':'Held for later',ok?s.ask.yes.split('.')[0]+'.':'It’s on tomorrow’s brief.');
+        waiting=false;
+        if(!playing&&!done){setPlaying(true);}else{setState('replay running');schedule(1400);}
+      }
+      y.addEventListener('click',function(){choose(true);});
+      no.addEventListener('click',function(){choose(false);});
+      waiting=true;
+    }else{
+      li.appendChild(tag(s.tag,s.tt||TT[s.tag]));
+    }
+    feed.appendChild(li);
+  }
+  function summary(){
+    var li=el('li','sum enter'),ul=el('ul'),sc=S[key];
+    li.appendChild(el('h3',null,'11:30 AM. The morning so far.'));
+    for(var n=0;n<sc.sum.length;n++)ul.appendChild(el('li',null,sc.sum[n]));
+    li.appendChild(ul);
+    li.appendChild(el('p','you','What you did: read the brief and '+(held?'held one draft for later.':'approved one draft with a tap.')));
+    li.appendChild(el('p','zero','Slipped through: nothing.'));
+    feed.appendChild(li);setClock('11:30 AM');
+  }
+  function next(){
+    if(!playing||waiting)return;
+    var sc=S[key];
+    if(i<sc.steps.length){render(sc.steps[i]);i++;if(waiting){setState('waiting on you');}else{schedule(2600);}}
+    else{summary();done=true;setPlaying(false);}
+  }
+  playBtn.addEventListener('click',function(){
+    if(done){reset(key);setPlaying(true);return;}
+    setPlaying(!playing);
+  });
+  resetBtn.addEventListener('click',function(){reset(key);setPlaying(true);});
+  for(var n=0;n<picks.length;n++)picks[n].addEventListener('click',function(){reset(this.dataset.k);setPlaying(true);});
+
+  /* start on its own the first time it scrolls into view, unless the visitor prefers less motion */
+  if(!reduce&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      if(es[0].isIntersecting){io.disconnect();if(!playing&&i===0){feed.innerHTML='';setPlaying(true);}}
+    },{threshold:.35});
+    io.observe(feed);
+  }
 })();
 </script>
 </body>
