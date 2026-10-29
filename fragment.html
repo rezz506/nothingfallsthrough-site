@@ -110,6 +110,21 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .trust div{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;font-size:1.05rem;color:var(--ink-2)}
 .trust svg{width:22px;height:22px;color:var(--mint);flex:none;margin-top:.15rem}
 .trust b{color:var(--ink);display:block}
+/* connections hub */
+.hubwrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:900px){.hubwrap{grid-template-columns:1fr}}
+.hub{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;padding:1rem;border:1px solid var(--line);border-radius:18px;background:radial-gradient(60% 60% at 50% 50%,rgba(242,179,61,.10),transparent 70%),var(--ground-2)}
+@media (max-width:520px){.hub{grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;padding:.7rem}}
+.tile{display:grid;gap:.45rem;justify-items:center;align-content:center;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.9rem .5rem;min-width:0;font-size:.86rem;color:var(--ink-2);line-height:1.2}
+.tile .lg{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.tile .lg svg{width:26px;height:26px}
+.tile b{color:var(--ink);font-weight:600;font-size:.92rem}
+.tile.core{grid-column:2/4;background:linear-gradient(180deg,rgba(242,179,61,.18),rgba(242,179,61,.06));border-color:rgba(242,179,61,.5);box-shadow:0 0 0 1px rgba(242,179,61,.2),0 20px 40px -24px rgba(242,179,61,.6)}
+@media (max-width:520px){.tile.core{grid-column:1/4}}
+.tile.core .lg{background:var(--amber);color:var(--amber-ink);width:52px;height:52px}
+.tile.core b{font-family:var(--display);font-size:1.05rem}
+.hubwrap .stack p{color:var(--ink-2)}
+.hubwrap .stack p b{color:var(--ink)}
 /* pains */
 .pains{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:0;padding:0;list-style:none}
 @media (max-width:720px){.pains{grid-template-columns:1fr}}
@@ -219,6 +234,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </a>
   <nav aria-label="Sections">
     <a href="#does">What it does</a>
+    <a href="#connects">Connections</a>
     <a href="#work">See it work</a>
     <a href="#how">How it starts</a>
     <a href="#pricing">Pricing</a>
@@ -278,7 +294,37 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band lift">
+
+<section class="band lift" id="connects">
+  <div class="wrap hubwrap">
+    <div class="stack">
+      <div class="eyebrow">What it connects to</div>
+      <h2>It plugs into the tools you already pay for</h2>
+      <p>Nothing gets replaced. The assistant sits in the middle of what you already use and works across all of it: it reads the email in <b>Outlook</b>, checks the price in <b>QuickBooks</b>, looks up the account in your <b>CRM</b>, and sends the alert to your phone.</p>
+      <p>If it isn't pictured, ask. If the service has a proper way to connect, it connects. There is no limit on how many.</p>
+    </div>
+    <div class="hub" aria-label="Tools the assistant connects to">
+      <div class="tile"><div class="lg" style="background:#0F6CBD"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><b>Outlook</b>Microsoft 365</div>
+      <div class="tile"><div class="lg" style="background:#fff;color:#D93025">M</div><b>Gmail</b>Google Workspace</div>
+      <div class="tile core"><div class="lg"><svg viewBox="0 0 64 64" aria-hidden="true" width="30" height="30"><path d="M16 34l11 11 21-24" fill="none" stroke="#1A1200" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><b>Your assistant</b>on your own server</div>
+      <div class="tile"><div class="lg" style="background:#1A73E8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><b>Calendar</b>Google or Outlook</div>
+      <div class="tile"><div class="lg" style="background:#2CA01C">qb</div><b>QuickBooks</b>Accounting</div>
+      <div class="tile"><div class="lg" style="background:#E42527">Z</div><b>Zoho CRM</b>Customer records</div>
+      <div class="tile"><div class="lg" style="background:#FF7A59">H</div><b>HubSpot</b>CRM and marketing</div>
+      <div class="tile"><div class="lg" style="background:#0A66C2">in</div><b>LinkedIn</b>Drafts and tracking</div>
+      <div class="tile"><div class="lg" style="background:#5865F2"><svg viewBox="0 0 24 24" fill="#fff"><path d="M19.5 5.6A16 16 0 0 0 15.6 4.4l-.5 1a15 15 0 0 0-6.2 0l-.5-1a16 16 0 0 0-3.9 1.2C2 9.3 1.3 13 1.6 16.5a16 16 0 0 0 4.8 2.4l1-1.6a10 10 0 0 1-1.6-.8l.4-.3a11.5 11.5 0 0 0 11.6 0l.4.3-1.6.8 1 1.6a16 16 0 0 0 4.8-2.4c.4-4-.7-7.6-2.9-10.9zM8.7 14.3c-.9 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.8 2-1.7 2zm6.6 0c-.9 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.8 2-1.7 2z"/></svg></div><b>Discord</b>Chat with it</div>
+      <div class="tile"><div class="lg" style="background:#4A154B">#</div><b>Slack</b>Chat with it</div>
+      <div class="tile"><div class="lg" style="background:#5059C9">T</div><b>Teams</b>Chat with it</div>
+      <div class="tile"><div class="lg" style="background:#25D366"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L4 20l1.2-4.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div><b>WhatsApp</b>Chat with it</div>
+      <div class="tile"><div class="lg" style="background:#F2B33D;color:#1A1200"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div><b>Your phone</b>Texts and alerts</div>
+      <div class="tile"><div class="lg" style="background:#1E8E3E"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l3-4h10l3 4v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M4 7h16M9 11h6"/></svg></div><b>Drive, OneDrive</b>Files and folders</div>
+      <div class="tile"><div class="lg" style="background:#217346">X</div><b>Excel, Sheets</b>Price lists, reports</div>
+      <div class="tile"><div class="lg" style="background:#6B4FBB">A</div><b>Prospect data</b>Apollo and lists</div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
   <div class="wrap stack" style="gap:2rem">
     <div>
       <div class="eyebrow">You know the feeling</div>
@@ -293,7 +339,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band" id="does">
+<section class="band lift" id="does">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
       <div class="eyebrow">What it does</div>
@@ -311,7 +357,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band lift" id="work">
+<section class="band" id="work">
   <div class="wrap work">
     <div class="phone" aria-label="Example of the assistant on a phone">
       <div class="screen">
@@ -338,7 +384,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band" id="for">
+<section class="band lift" id="for">
   <div class="wrap forwho">
     <div class="stack">
       <div class="eyebrow">Who it's for</div>
@@ -359,7 +405,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band lift" id="different">
+<section class="band" id="different">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
       <div class="eyebrow">Why it's not another piece of software</div>
@@ -375,7 +421,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band" id="how">
+<section class="band lift" id="how">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
       <div class="eyebrow">How it starts</div>
@@ -391,7 +437,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band lift" id="pricing">
+<section class="band" id="pricing">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
       <div class="eyebrow">Pricing</div>
@@ -427,7 +473,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band" id="about">
+<section class="band lift" id="about">
   <div class="wrap about">
     <div class="card">
       <div>
@@ -451,7 +497,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   </div>
 </section>
 
-<section class="band lift">
+<section class="band">
   <div class="wrap stack" style="gap:2rem">
     <div>
       <div class="eyebrow">Questions owners ask</div>
