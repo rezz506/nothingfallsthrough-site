@@ -23,6 +23,7 @@
 {"@type":"Question","name":"Which AI is it?","acceptedAnswer":{"@type":"Answer","text":"Claude, made by Anthropic, running on a server you own with a subscription in your name. The setting that lets conversations train their models is turned off on day one."}},
 {"@type":"Question","name":"Do I need to be good with computers?","acceptedAnswer":{"@type":"Answer","text":"No. If you can send a text message, you can use it. There is nothing to install and nothing to configure."}},
 {"@type":"Question","name":"What does it connect to?","acceptedAnswer":{"@type":"Answer","text":"Whatever you run the business on, as long as it offers a proper way to connect. Outlook or Gmail, Microsoft 365 or Google Workspace, your calendar, your CRM, QuickBooks, your files, your chat app."}},
+{"@type":"Question","name":"Can I use my own server?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any Linux server with at least 4 GB of memory and root access works, whether one you already rent or a provider you prefer. Otherwise I recommend one and you buy it in your name."}},
 {"@type":"Question","name":"What if I don't like it?","acceptedAnswer":{"@type":"Answer","text":"Care is month to month. You own the server and the accounts, so if you stop, nothing disappears."}},
 {"@type":"Question","name":"Will it send things without asking?","acceptedAnswer":{"@type":"Answer","text":"Not until you say so. Every job starts in approval mode. When you are comfortable, routine jobs can run on their own and anything going to a customer keeps your approval."}}
 ]}]}
@@ -222,6 +223,15 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .plan .fine{font-size:.92rem;color:var(--ink-3);border-top:1px solid var(--line);padding-top:.9rem}
 .note{font-size:1rem;color:var(--ink-2);max-width:46em;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:1rem 1.2rem}
 
+/* add-ons under pricing */
+.addons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+@media (max-width:820px){.addons{grid-template-columns:1fr}}
+.addon{border:1px solid var(--line);border-radius:16px;padding:1.4rem;display:grid;gap:.8rem;align-content:start;background:rgba(255,255,255,.025)}
+.addon p{color:var(--ink-2);font-size:1.05rem}
+.addon .fine{font-size:.95rem;color:var(--ink-3);border-top:1px solid var(--line);padding-top:.8rem}
+/* photo slot */
+.card .photo{width:112px;height:112px;border-radius:50%;background:linear-gradient(135deg,rgba(242,179,61,.35),rgba(61,220,151,.25));border:1px solid rgba(242,179,61,.5);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:2rem;color:var(--ink);overflow:hidden}
+.card .photo img{width:100%;height:100%;object-fit:cover;display:block}
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:clamp(2rem,5vw,4rem);align-items:start}
 @media (max-width:820px){.about{grid-template-columns:1fr}}
@@ -483,7 +493,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
           <li>Care is month to month, stop any time</li>
           <li>No cap on how many of your apps get connected</li>
         </ul>
-        <p class="fine">Outside services you pay directly: your Claude subscription at $100 a month, and a private server at $8.99 a month paid two years up front.</p>
+        <p class="fine">Outside services you pay directly: your Claude subscription at $100 a month, and a small private server, roughly $7 to $15 a month depending on the size and term you pick, usually billed one or two years up front.</p>
       </div>
       <div class="plan lead">
         <span class="pill">The full system</span>
@@ -495,7 +505,19 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
           <li>Care priced for the hours it really takes</li>
           <li>Same ownership: your server, your accounts, your data</li>
         </ul>
-        <p class="fine">Same outside services. The written quote lists every cost, mine and theirs, so there is nothing hidden.</p>
+        <p class="fine">Same outside services. A busier setup may call for a larger server, still in the same price range. The written quote lists every cost, mine and theirs, so there is nothing hidden.</p>
+      </div>
+    </div>
+    <div class="addons">
+      <div class="addon">
+        <h3>About the server</h3>
+        <p>The assistant runs on a small rented Linux server, the kind any hosting company sells. The size depends on the package: one person's assistant fits the smallest plan, a busy company's assistant gets the next size up. As of October 2026 that runs about $7 to $15 a month, billed by the provider, usually one or two years up front. I'll recommend one and you buy it in your name.</p>
+        <p>Already have a server, or a provider you prefer? That works too. It needs to be a Linux server with at least 4 GB of memory and root access so I can install and secure what the assistant needs.</p>
+      </div>
+      <div class="addon">
+        <h3>Also available: a website like this one</h3>
+        <p>If your business needs a clean one-page site, or a new one, I build it the same way I built this page: fast to load, easy to read on a phone, written in plain English, with your domain in your name. Hosting costs nothing, and once your assistant is running it can keep the site's details current.</p>
+        <p class="fine">Fixed price, quoted after the call. Usually about a week.</p>
       </div>
     </div>
     <p class="note">My prices are firm. Prices from outside companies are theirs, current as of October 2026, and can change. If you remember something small halfway through the build, it goes in at no extra charge. A big new job gets its own written quote before any work starts.</p>
@@ -505,6 +527,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
 <section class="band lift" id="about">
   <div class="wrap about">
     <div class="card">
+      <div class="photo" aria-label="Photo of Jake Jones"><span>JJ</span></div>
       <div>
         <div class="name">Jake Jones</div>
         <div class="role">Builds and runs every assistant personally</div>
@@ -539,6 +562,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
       <details><summary>Will it send things without asking?</summary><p>Not until you say so. Every job starts in approval mode. When you're comfortable, you switch routine jobs to run on their own and keep approval on for anything that goes to a customer.</p></details>
       <details><summary>Do I need to be good with computers?</summary><p>No. If you can send a text message, you can use it. There is nothing to install on your computer and nothing to configure. I handle all of that.</p></details>
       <details><summary>What does it connect to?</summary><p>Whatever you run the business on, as long as it offers a proper way to connect. Outlook or Gmail, Microsoft 365 or Google Workspace, your calendar, your CRM, QuickBooks, your files, your chat app. There is no cap on how many.</p></details>
+      <details><summary>Can I use my own server?</summary><p>Yes. Any Linux server with at least 4 GB of memory and root access works, whether it's one you already rent or a provider you prefer. If you'd rather not deal with it, I recommend one and you buy it in your name. Either way it is yours.</p></details>
       <details><summary>What if I don't like it?</summary><p>Care is month to month. You own the server and the accounts, so if you stop, nothing disappears and nothing is held hostage.</p></details>
       <details><summary>What happens when it gets something wrong?</summary><p>It will, especially in the first weeks. You tell me, I find out why, and I write the rule that stops it from happening again.</p></details>
       <details><summary>Where are you?</summary><p>Middle Tennessee. Everything on this page is done remotely, so where you are doesn't matter.</p></details>
