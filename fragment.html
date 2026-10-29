@@ -2,297 +2,419 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300;0,500;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: left-aligned single column, 1100px max; the hero pairs the headline with a day-ledger of catches, the one card on the page. */
+/* Layout: dark, committed single theme. Hero = headline left, a live "today" panel right over a canvas net that catches falling items. Sections alternate flat ground / lifted panels. Left-aligned, 1140px. */
 :root{
-  --bg:#F2F4F6;        /* cool paper */
-  --bg-2:#E6EAEE;      /* band */
-  --paper:#FFFFFF;     /* ledger card */
-  --fg:#15212B;        /* slate ink */
-  --fg-2:#4A5864;      /* secondary ink */
-  --rule:#C9D1D8;      /* rules */
-  --accent:#0F6E56;    /* caught green */
-  --accent-ink:#FFFFFF;
-  --brass:#9A6F1E;     /* one warm note */
-  --display:"Bitter",Georgia,"Times New Roman",serif;
+  --ground:#0B1016;      /* night ground */
+  --ground-2:#0F161E;    /* band */
+  --panel:#141C25;       /* lifted panel */
+  --panel-2:#1A2430;     /* hover / nested */
+  --line:rgba(255,255,255,.09);
+  --ink:#EEF2F5;
+  --ink-2:#A9B6C2;
+  --ink-3:#6E7D8B;
+  --amber:#F2B33D;       /* the brand accent */
+  --amber-ink:#1A1200;
+  --mint:#3DDC97;        /* caught */
+  --rose:#FF7A7A;        /* the thing that would have slipped */
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
   --body:"Source Sans 3","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0F171D;--bg-2:#141E26;--paper:#19242D;--fg:#E7ECEF;--fg-2:#A7B3BC;--rule:#2C3942;--accent:#3FBF95;--accent-ink:#0B1A15;--brass:#D2A24A;color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0F171D;--bg-2:#141E26;--paper:#19242D;--fg:#E7ECEF;--fg-2:#A7B3BC;--rule:#2C3942;--accent:#3FBF95;--accent-ink:#0B1A15;--brass:#D2A24A;color-scheme:dark;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;background:var(--ground)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
-a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-0.01em}
-h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:700}
-h2{font-size:clamp(1.9rem,4vw,2.75rem)}
-h3{font-size:1.35rem}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;text-wrap:balance;letter-spacing:-0.02em}
+h1{font-size:clamp(2.9rem,7.2vw,5.4rem);font-weight:800}
+h2{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:700;letter-spacing:-0.01em}
 p{margin:0}
-.wrap{max-width:1100px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.band{padding-block:clamp(3rem,8vw,6.5rem)}
-.band.alt{background:var(--bg-2)}
-.lede{font-size:1.3rem;max-width:34em;color:var(--fg-2)}
+.wrap{max-width:1140px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:clamp(3.5rem,8vw,7rem);position:relative}
+.band.lift{background:var(--ground-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.lede{font-size:1.25rem;color:var(--ink-2);max-width:36em}
 .measure{max-width:38em}
 .stack{display:grid;gap:1.25rem}
-.btn{display:inline-block;font-family:var(--body);font-weight:600;font-size:1.05rem;text-decoration:none;padding:.9rem 1.4rem;border-radius:4px;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink)}
-.btn.quiet{background:transparent;color:var(--fg);border-color:var(--rule)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--body);font-weight:600;font-size:1.05rem;text-decoration:none;padding:.85rem 1.3rem;border-radius:8px;border:1px solid transparent;background:var(--amber);color:var(--amber-ink);box-shadow:0 8px 24px -10px rgba(242,179,61,.6);transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px -10px rgba(242,179,61,.7)}
+.btn.ghost{background:rgba(255,255,255,.04);color:var(--ink);border-color:var(--line);box-shadow:none}
+.btn.ghost:hover{background:rgba(255,255,255,.07)}
 .btns{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
 
-/* header */
-.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1.25rem;border-bottom:1px solid var(--rule)}
-.brand{font-family:var(--display);font-weight:700;font-size:1.2rem;text-decoration:none;letter-spacing:-0.01em}
-.brand span{color:var(--accent)}
-.top nav{display:flex;gap:1.4rem;font-size:1rem}
-.top nav a{text-decoration:none;color:var(--fg-2)}
-@media (max-width:640px){.top nav{display:none}}
+/* top bar */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,16,22,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--ground)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:.85rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:800;font-size:1.15rem;text-decoration:none;letter-spacing:-0.02em}
+.brand svg{width:26px;height:26px;flex:none}
+.top nav{display:flex;gap:1.5rem;font-size:.98rem;align-items:center}
+.top nav a{text-decoration:none;color:var(--ink-2)}
+.top nav a:hover{color:var(--ink)}
+.top nav a.btn{padding:.55rem 1rem;font-size:.95rem;color:var(--amber-ink)}
+@media (max-width:760px){.top nav a:not(.btn){display:none}}
 
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;padding-block:clamp(2.5rem,7vw,6rem)}
-@media (max-width:860px){.hero{grid-template-columns:1fr}}
-.hero .stack{gap:1.6rem}
-.hero h1 em{font-style:italic;font-weight:400}
-.ledger{background:var(--paper);border:1px solid var(--rule);border-radius:6px;box-shadow:0 1px 0 var(--rule),0 18px 40px -24px rgba(21,33,43,.35);min-width:0}
-.ledger header{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid var(--rule);font-size:.95rem;color:var(--fg-2)}
-.ledger header b{font-family:var(--display);font-weight:700;color:var(--fg);font-size:1.05rem}
-.ledger ol{list-style:none;margin:0;padding:0}
-.ledger li{display:grid;grid-template-columns:5.2em 1fr 1.6em;gap:.75rem;padding:.9rem 1.25rem;border-bottom:1px solid var(--rule);align-items:start;font-size:1rem;line-height:1.4}
-.ledger li:last-child{border-bottom:0}
-.ledger time{font-variant-numeric:tabular-nums;color:var(--fg-2);white-space:nowrap}
-.ledger .mark{width:1.4em;height:1.4em;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:.85em;font-weight:700;justify-self:end;margin-top:.1em}
-.ledger .mark.hold{background:var(--brass)}
-.ledger footer{padding:.8rem 1.25rem;font-size:.9rem;color:var(--fg-2);border-top:1px solid var(--rule);background:var(--bg-2);border-radius:0 0 6px 6px}
-@media (max-width:420px){.ledger li{grid-template-columns:4.4em 1fr 1.4em;padding-inline:1rem;font-size:.95rem}.ledger header,.ledger footer{padding-inline:1rem}}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.hero .glow{position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(60% 50% at 15% 10%,rgba(242,179,61,.16),transparent 60%),
+  radial-gradient(45% 45% at 90% 85%,rgba(61,220,151,.12),transparent 60%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,5vw,4.5rem);align-items:center;padding-block:clamp(3.5rem,8vw,7rem) clamp(7rem,14vw,11rem)}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1 .fall{display:inline-block;color:transparent;background:linear-gradient(100deg,var(--amber) 0%,#FFD37A 55%,var(--mint) 120%);-webkit-background-clip:text;background-clip:text}
+.hero .stack{gap:1.5rem}
+.hero .who{font-size:1rem;color:var(--ink-3);max-width:36em}
 
-/* rows of plain content */
-.rows{display:grid;gap:0;border-top:1px solid var(--rule)}
-.row{display:grid;grid-template-columns:minmax(0,16rem) minmax(0,1fr);gap:1rem 2.5rem;padding-block:1.4rem;border-bottom:1px solid var(--rule)}
-@media (max-width:720px){.row{grid-template-columns:1fr;gap:.4rem}}
-.row h3{font-size:1.25rem}
-.row p{color:var(--fg-2);max-width:38em}
+/* today panel */
+.today{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0)) ,var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06);min-width:0;overflow:hidden}
+.today header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.9rem 1.1rem;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.today header b{color:var(--ink);font-weight:600}
+.today .live{display:inline-flex;align-items:center;gap:.45rem;color:var(--mint)}
+.today .live i{width:.5rem;height:.5rem;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(61,220,151,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(61,220,151,.55)}70%{box-shadow:0 0 0 .55rem rgba(61,220,151,0)}100%{box-shadow:0 0 0 0 rgba(61,220,151,0)}}
+@media (prefers-reduced-motion:reduce){.today .live i{animation:none}}
+.today ol{list-style:none;margin:0;padding:.4rem 0}
+.today li{display:grid;grid-template-columns:4.6em minmax(0,1fr) auto;gap:.8rem;padding:.75rem 1.1rem;align-items:start;font-size:.98rem;line-height:1.4}
+.today li+li{border-top:1px solid var(--line)}
+.today time{font-family:var(--mono);font-size:.8rem;color:var(--ink-3);padding-top:.2em;white-space:nowrap}
+.today .what{color:var(--ink-2)}
+.today .what b{color:var(--ink);font-weight:600}
+.tag{width:max-content;justify-self:end;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .5rem;border-radius:999px;border:1px solid;white-space:nowrap;margin-top:.15em}
+.tag.ok{color:var(--mint);border-color:rgba(61,220,151,.35);background:rgba(61,220,151,.08)}
+.tag.held{color:var(--amber);border-color:rgba(242,179,61,.4);background:rgba(242,179,61,.08)}
+.tag.phone{color:var(--rose);border-color:rgba(255,122,122,.4);background:rgba(255,122,122,.08)}
+.today footer{padding:.75rem 1.1rem;font-size:.85rem;color:var(--ink-3);border-top:1px solid var(--line);background:rgba(0,0,0,.18)}
+@media (max-width:420px){.today li{grid-template-columns:4em minmax(0,1fr);}.today .tag{grid-column:2;justify-self:start}}
 
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem)}
-@media (max-width:820px){.two{grid-template-columns:1fr}}
-.pains{display:grid;gap:1.1rem;margin:0;padding:0;list-style:none}
-.pains li{font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.6rem);font-weight:400;font-style:italic;line-height:1.3;padding-left:1.1rem;border-left:3px solid var(--brass)}
+/* pains */
+.pains{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:0;padding:0;list-style:none}
+@media (max-width:720px){.pains{grid-template-columns:1fr}}
+.pains li{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.3rem 1.3rem 1.5rem;font-family:var(--display);font-weight:500;font-size:1.15rem;line-height:1.35;color:var(--ink)}
+.pains li::before{content:"";position:absolute;left:0;top:1rem;bottom:1rem;width:3px;border-radius:3px;background:var(--rose)}
+.pains li small{display:block;margin-top:.5rem;font-family:var(--body);font-weight:400;font-size:.95rem;color:var(--ink-2)}
 
-/* steps: a real sequence, so numbered */
-.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:step;border-top:1px solid var(--rule)}
-.steps li{display:grid;grid-template-columns:3.2rem minmax(0,16rem) minmax(0,1fr);gap:1rem 2rem;padding-block:1.4rem;border-bottom:1px solid var(--rule);counter-increment:step}
-.steps li::before{content:counter(step);font-family:var(--display);font-weight:700;font-size:1.6rem;color:var(--accent);line-height:1.1}
-@media (max-width:720px){.steps li{grid-template-columns:3.2rem 1fr}.steps li p{grid-column:2}}
-.steps h3{font-size:1.25rem}
-.steps p{color:var(--fg-2);max-width:38em}
+/* features */
+.feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media (max-width:960px){.feats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.feats{grid-template-columns:1fr}}
+.feat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.35rem;display:grid;gap:.8rem;align-content:start;min-width:0}
+.feat .ic{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:rgba(242,179,61,.1);border:1px solid rgba(242,179,61,.3);color:var(--amber)}
+.feat .ic svg{width:22px;height:22px}
+.feat p{color:var(--ink-2);font-size:1rem}
+
+/* see it work */
+.work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:900px){.work{grid-template-columns:1fr}}
+.phone{max-width:380px;margin-inline:auto;width:100%;background:#05080B;border:1px solid rgba(255,255,255,.14);border-radius:34px;padding:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.04)}
+.screen{background:linear-gradient(180deg,#121A24,#0C1218);border-radius:24px;padding:1.1rem .9rem;display:grid;gap:.7rem;min-height:420px}
+.screen .clock{text-align:center;font-family:var(--display);font-weight:700;font-size:2.2rem;letter-spacing:-0.02em;color:var(--ink);padding-top:.4rem}
+.screen .date{text-align:center;color:var(--ink-2);font-size:.9rem;margin-top:-.6rem}
+.alert{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:.75rem .85rem;display:grid;grid-template-columns:auto 1fr auto;gap:.6rem;align-items:start;backdrop-filter:blur(8px)}
+.alert .ap{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.8rem;color:var(--amber-ink);background:var(--amber)}
+.alert .ap.m{background:var(--mint);color:#04120C}
+.alert b{display:block;font-size:.92rem}
+.alert span{font-size:.9rem;color:var(--ink-2);line-height:1.35}
+.alert time{font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
+.chat{display:grid;gap:.5rem;margin-top:.3rem}
+.msg{max-width:88%;padding:.6rem .8rem;border-radius:14px;font-size:.92rem;line-height:1.35}
+.msg.me{justify-self:end;background:var(--amber);color:var(--amber-ink);border-bottom-right-radius:4px}
+.msg.it{justify-self:start;background:rgba(255,255,255,.08);color:var(--ink);border-bottom-left-radius:4px}
+.work .stack{gap:1.1rem}
+.work .pt{display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:start}
+.work .pt .dot{width:10px;height:10px;border-radius:50%;background:var(--mint);margin-top:.55rem;box-shadow:0 0 12px rgba(61,220,151,.6)}
+.work .pt p{color:var(--ink-2)}
+.work .pt b{color:var(--ink)}
+
+/* owns */
+.owns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media (max-width:960px){.owns{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.owns{grid-template-columns:1fr}}
+.own{border-top:2px solid var(--amber);padding-top:1rem;display:grid;gap:.5rem;align-content:start}
+.own p{color:var(--ink-2);font-size:1rem}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;counter-reset:s}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:s;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.2rem;display:grid;gap:.6rem;align-content:start;position:relative;min-width:0}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;color:var(--amber)}
+.steps li small{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.steps p{color:var(--ink-2);font-size:.98rem}
 
 /* pricing */
-.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;align-items:start}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;align-items:stretch}
 @media (max-width:820px){.plans{grid-template-columns:1fr}}
-.plan{border-top:4px solid var(--rule);padding-top:1.25rem;display:grid;gap:1rem}
-.plan.lead{border-top-color:var(--accent)}
-.plan .price{font-family:var(--display);font-size:2.4rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
-.plan .price small{font-family:var(--body);font-size:1rem;font-weight:400;color:var(--fg-2);display:block;margin-top:.4rem}
-.plan ul{margin:0;padding-left:1.1rem;color:var(--fg-2);display:grid;gap:.4rem}
-.note{font-size:1rem;color:var(--fg-2);max-width:42em;border-left:3px solid var(--rule);padding-left:1rem}
-
-/* faq */
-.faq{border-top:1px solid var(--rule)}
-.faq details{border-bottom:1px solid var(--rule)}
-.faq summary{cursor:pointer;list-style:none;padding-block:1.1rem;font-family:var(--display);font-size:1.2rem;font-weight:500;display:flex;justify-content:space-between;gap:1rem;align-items:center}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-weight:300;font-size:1.6rem;color:var(--accent);flex:none}
-.faq details[open] summary::after{content:"–"}
-.faq details p{color:var(--fg-2);max-width:40em;padding-bottom:1.2rem}
+.plan{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.6rem;display:grid;gap:1.1rem;align-content:start;position:relative;min-width:0}
+.plan.lead{border-color:rgba(242,179,61,.5);box-shadow:0 0 0 1px rgba(242,179,61,.25),0 30px 60px -40px rgba(242,179,61,.5)}
+.plan .pill{position:absolute;top:-.8rem;left:1.4rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;background:var(--amber);color:var(--amber-ink);padding:.3rem .6rem;border-radius:999px;font-weight:600}
+.plan .price{font-family:var(--display);font-size:2.6rem;font-weight:800;letter-spacing:-0.03em;line-height:1;font-variant-numeric:tabular-nums}
+.plan .price small{display:block;font-family:var(--body);font-size:1rem;font-weight:400;color:var(--ink-2);letter-spacing:0;margin-top:.5rem}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:.55rem;color:var(--ink-2);font-size:1rem}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:start}
+.plan li::before{content:"";width:16px;height:16px;border-radius:50%;margin-top:.25rem;background:rgba(61,220,151,.15);border:1px solid rgba(61,220,151,.5);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%233DDC97' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:100%}
+.plan .fine{font-size:.92rem;color:var(--ink-3);border-top:1px solid var(--line);padding-top:.9rem}
+.note{font-size:1rem;color:var(--ink-2);max-width:46em;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:10px;padding:1rem 1.2rem}
 
 /* about */
-.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(2rem,5vw,4rem);align-items:start}
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:clamp(2rem,5vw,4rem);align-items:start}
 @media (max-width:820px){.about{grid-template-columns:1fr}}
-.sig{font-family:var(--display);font-style:italic;font-size:1.25rem}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.5rem;display:grid;gap:1rem}
+.card .name{font-family:var(--display);font-weight:800;font-size:1.5rem;letter-spacing:-0.02em}
+.card .role{color:var(--ink-2);font-size:1rem}
+.card .facts{display:grid;gap:.5rem;font-size:.95rem;color:var(--ink-2);border-top:1px solid var(--line);padding-top:1rem}
+.card .facts div{display:grid;grid-template-columns:7.5em 1fr;gap:.5rem}
+.card .facts span{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-top:.25em}
+.about .stack p{color:var(--ink-2)}
+.about .stack p.big{color:var(--ink);font-family:var(--display);font-weight:500;font-size:1.3rem;line-height:1.35}
+
+/* faq */
+.faq{display:grid;gap:.6rem}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 1.2rem}
+.faq details[open]{border-color:rgba(242,179,61,.4)}
+.faq summary{cursor:pointer;list-style:none;padding-block:1rem;font-family:var(--display);font-weight:700;font-size:1.08rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:500;font-size:1.5rem;color:var(--amber);flex:none;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--ink-2);max-width:42em;padding-bottom:1.1rem;font-size:1.02rem}
 
 /* contact */
-.contact{display:grid;gap:1.25rem}
-.addr{font-family:var(--display);font-size:clamp(1.3rem,3vw,1.9rem);font-weight:500;word-break:break-all}
-.copy{font:inherit;font-size:1rem;font-weight:600;background:transparent;color:var(--fg);border:2px solid var(--rule);border-radius:4px;padding:.5rem .9rem;cursor:pointer}
-.copy[data-done="1"]{border-color:var(--accent);color:var(--accent)}
+.cta{position:relative;overflow:hidden;border-top:1px solid var(--line)}
+.cta .glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(50% 60% at 50% 100%,rgba(242,179,61,.18),transparent 70%)}
+.cta .wrap{position:relative;display:grid;gap:1.4rem;justify-items:start}
+.addr{font-family:var(--display);font-weight:800;font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:-0.02em;word-break:break-all;color:var(--amber)}
+.copy{font:inherit;font-size:1rem;font-weight:600;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.7rem 1rem;cursor:pointer}
+.copy[data-done="1"]{border-color:var(--mint);color:var(--mint)}
 
-footer.site{padding-block:2rem;border-top:1px solid var(--rule);font-size:.95rem;color:var(--fg-2);display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between}
+footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between}
 </style>
 
-<div class="wrap">
-  <div class="top">
-    <a class="brand" href="#top">Nothing Falls <span>Through</span></a>
-    <nav aria-label="Sections">
-      <a href="#does">What it does</a>
-      <a href="#how">How it starts</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</div>
+<div class="topbar"><div class="wrap top">
+  <a class="brand" href="#top" aria-label="Nothing Falls Through, home">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#F2B33D"/><path d="M16 34l11 11 21-24" fill="none" stroke="#1A1200" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Nothing Falls Through
+  </a>
+  <nav aria-label="Sections">
+    <a href="#does">What it does</a>
+    <a href="#work">See it work</a>
+    <a href="#how">How it starts</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a class="btn" href="#contact">Book a call</a>
+  </nav>
+</div></div>
 
 <main id="top">
-<section class="wrap hero">
-  <div class="stack">
-    <h1>Nothing falls <em>through.</em></h1>
-    <p class="lede">A managed AI assistant that works inside your business every day. It reads what comes in, keeps the follow-ups going, and puts the things that can't wait on your phone. Built and run for you by someone who runs his own company this way.</p>
-    <div class="btns">
-      <a class="btn" href="#contact">Book a 30-minute call</a>
-      <a class="btn quiet" href="#does">See what it does</a>
+<section class="hero">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="stack">
+      <div class="eyebrow">Managed AI assistant for small business owners</div>
+      <h1>Nothing falls <span class="fall">through.</span></h1>
+      <p class="lede">An assistant that lives inside your business and works it every day. It reads what comes in, keeps the follow-ups going, drafts the quotes, and puts the things that can't wait on your phone. I build it on your own server and I keep it running.</p>
+      <div class="btns">
+        <a class="btn" href="#contact">Book a 30-minute call</a>
+        <a class="btn ghost" href="#work">See it work</a>
+      </div>
+      <p class="who">Built for owners who are also the salesperson, the quoter and the one who answers the email. Trades, shops, distributors, studios, service companies.</p>
     </div>
-    <p class="measure" style="color:var(--fg-2);font-size:1rem">For owners of small companies who are also the salesperson, the quoter and the person who answers the email. Trades, shops, distributors, studios, service businesses.</p>
-  </div>
 
-  <aside class="ledger" aria-label="One day of catches from the assistant that runs my own company">
-    <header><b>One ordinary Tuesday</b><span>what the assistant caught</span></header>
-    <ol>
-      <li><time>6:52 AM</time><span>Morning brief sent. Three open quotes need an answer this week, one of them expires Friday.</span><span class="mark" aria-label="handled">✓</span></li>
-      <li><time>8:05 AM</time><span>Fourteen new prospect emails went out. Every name was checked against the customer list first, so no existing customer got a cold pitch.</span><span class="mark" aria-label="handled">✓</span></li>
-      <li><time>9:40 AM</time><span>A vendor's quote arrived. Priced in the house format and in the customer's hands before lunch, not next week.</span><span class="mark" aria-label="handled">✓</span></li>
-      <li><time>11:02 AM</time><span>A customer wrote back. Tomorrow's scheduled follow-up to him was cancelled before it could go out.</span><span class="mark hold" aria-label="held">■</span></li>
-      <li><time>1:30 PM</time><span>An email asked for a decision by Friday. It is an alert on the owner's phone, not line 40 of the inbox.</span><span class="mark" aria-label="handled">✓</span></li>
-      <li><time>4:45 PM</time><span>Month-end expense report drafted from the card statement and receipts. It is due on the 1st.</span><span class="mark" aria-label="handled">✓</span></li>
-    </ol>
-    <footer>A real day from my own setup. Names and figures changed, the jobs are exactly what it does.</footer>
-  </aside>
+    <aside class="today" aria-label="What the assistant caught in one day, from my own company">
+      <header><b>Today</b><span class="live"><i></i>assistant on duty</span></header>
+      <ol>
+        <li><time>6:52</time><span class="what"><b>Morning brief sent.</b> Three open quotes need an answer this week. One expires Friday.</span><span class="tag ok">done</span></li>
+        <li><time>8:05</time><span class="what"><b>14 prospect emails out.</b> Every name checked against the customer list first.</span><span class="tag ok">done</span></li>
+        <li><time>9:40</time><span class="what"><b>Vendor quote arrived.</b> Marked up in the house format, customer quote in Drafts by 10:15.</span><span class="tag ok">done</span></li>
+        <li><time>11:02</time><span class="what"><b>Customer replied.</b> Tomorrow's automatic follow-up to him was cancelled.</span><span class="tag held">held</span></li>
+        <li><time>1:30</time><span class="what"><b>"Need an answer by Friday"</b> found in an email. Sent to the owner's phone.</span><span class="tag phone">alert</span></li>
+        <li><time>4:45</time><span class="what"><b>Expense report drafted</b> from the card statement. Due on the 1st.</span><span class="tag ok">done</span></li>
+      </ol>
+      <footer>A real day from the assistant that runs my own company. Names changed, jobs exact.</footer>
+    </aside>
+  </div>
 </section>
 
-<section class="band alt">
-  <div class="wrap two">
-    <div class="stack">
-      <h2>You know the feeling.</h2>
-      <p class="measure" style="color:var(--fg-2)">Nobody dropped the ball on purpose. There were just more balls than hands. The assistant exists for the gap between what you meant to do and what the day let you do.</p>
+<section class="band">
+  <div class="wrap stack" style="gap:2rem">
+    <div>
+      <div class="eyebrow">You know the feeling</div>
+      <h2>Nobody dropped the ball on purpose.<br>There were just more balls than hands.</h2>
     </div>
     <ul class="pains">
-      <li>The quote you meant to send Monday went out Thursday, after they'd bought elsewhere.</li>
-      <li>A supplier answered a week ago. The customer is still waiting on you.</li>
-      <li>"Can you get back to me by Friday?" sat on page three until Saturday.</li>
-      <li>The follow-up you promised yourself never happened, because the next fire did.</li>
+      <li>The quote you meant to send Monday went out Thursday.<small>They had bought elsewhere by Wednesday.</small></li>
+      <li>The supplier answered a week ago.<small>The customer is still waiting on you.</small></li>
+      <li>"Can you get back to me by Friday?"<small>Sat on page three of the inbox until Saturday.</small></li>
+      <li>The follow-up you promised yourself.<small>Never happened, because the next fire did.</small></li>
     </ul>
   </div>
 </section>
 
-<section class="band" id="does">
-  <div class="wrap stack" style="gap:2rem">
-    <div class="stack" style="gap:.75rem">
-      <h2>What it does, every day</h2>
-      <p class="lede">These are the jobs it runs inside my company right now. Yours gets the ones that fit how you work.</p>
+<section class="band lift" id="does">
+  <div class="wrap stack" style="gap:2.25rem">
+    <div>
+      <div class="eyebrow">What it does</div>
+      <h2>The jobs it runs every day</h2>
+      <p class="lede" style="margin-top:1rem">These run inside my company right now. Yours gets the ones that fit how you work, and we add more as you trust it.</p>
     </div>
-    <div class="rows">
-      <div class="row"><h3>Watches the inbox</h3><p>Reads what comes in, sorts the noise from the money, and flags anything with a date in it. A request with a deadline becomes an alert on your phone the same hour.</p></div>
-      <div class="row"><h3>Keeps follow-ups going</h3><p>A steady number of touches every day, on the schedule you set. It stops the moment someone replies, so nobody gets a canned follow-up after they already wrote back.</p></div>
-      <div class="row"><h3>Turns vendor quotes into customer quotes</h3><p>When a supplier's price lands, it builds the customer quote in your format with your markup and puts it in your drafts, ready to send the same day.</p></div>
-      <div class="row"><h3>Protects your relationships</h3><p>It knows who your customers are and never treats one like a stranger. Existing accounts stay out of every automated list unless you release them.</p></div>
-      <div class="row"><h3>Does the recurring paperwork</h3><p>Expense reports, weekly activity summaries, the Monday numbers for the team. Drafted on time, from the real records, without being asked twice.</p></div>
-      <div class="row"><h3>Remembers everything</h3><p>Every promise, markup, visit and "never contact that supplier again" lives in its memory on your server. Ask it anything about an account and get the answer, not a search.</p></div>
-      <div class="row"><h3>Works where you already work</h3><p>Your email, calendar, CRM, files and chat. You talk to it in a chat window on your phone. There is nothing new to learn and no portal to log in to.</p></div>
+    <div class="feats">
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>Watches the inbox</h3><p>Sorts the noise from the money and flags anything with a date in it. A request with a deadline is an alert on your phone the same hour.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 4v5h5"/></svg></div><h3>Keeps follow-ups going</h3><p>A steady number of touches every day on the schedule you set. It stops the moment someone replies, so nobody gets a canned follow-up after they wrote back.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg></div><h3>Turns vendor quotes into customer quotes</h3><p>When a supplier's price lands, it builds your quote in your format with your markup and puts it in Drafts, ready to send the same day.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Protects your relationships</h3><p>It knows who your customers are and never treats one like a stranger. Existing accounts stay out of every automated list unless you release them.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><h3>Does the recurring paperwork</h3><p>Expense reports, weekly activity summaries, the Monday numbers for the team. Drafted on time from the real records, without being asked twice.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a7 7 0 0 0-4 12.7V18a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.3A7 7 0 0 0 12 3z"/><path d="M10 22h4"/></svg></div><h3>Remembers everything</h3><p>Every promise, markup, plant visit and "never contact that supplier again" lives in its memory on your server. Ask about any account and get the answer, not a search.</p></div>
     </div>
   </div>
 </section>
 
-<section class="band alt" id="different">
-  <div class="wrap two">
-    <div class="stack">
-      <h2>Why this is not another app</h2>
-      <p class="measure" style="color:var(--fg-2)">Software companies sell you a tool and leave. This is an assistant with an operator behind it. I build it, I watch it, and when it gets something wrong I fix the rule so it never happens again.</p>
+<section class="band" id="work">
+  <div class="wrap work">
+    <div class="phone" aria-label="Example of the assistant on a phone">
+      <div class="screen">
+        <div class="clock">1:31</div>
+        <div class="date">Tuesday</div>
+        <div class="alert"><div class="ap">N</div><div><b>Deadline in an email</b><span>Mike at the plant needs a yes or no on the spare parts by Friday. Thread is in your inbox.</span></div><time>now</time></div>
+        <div class="alert"><div class="ap m">N</div><div><b>Quote ready to send</b><span>Customer quote for the conveyor drive is in Drafts. Vendor cost plus your usual markup.</span></div><time>9:41</time></div>
+        <div class="chat">
+          <div class="msg me">did the conveyor quote go out?</div>
+          <div class="msg it">Not yet. It's in your Drafts since 9:41, waiting on you. Want me to send it?</div>
+          <div class="msg me">send it. and remind me friday morning about mike</div>
+          <div class="msg it">Sent at 1:32. Friday 7:30 AM reminder set for Mike's spare parts decision.</div>
+        </div>
+      </div>
     </div>
-    <div class="stack" style="gap:1.4rem">
-      <div><h3>It runs on your own server</h3><p style="color:var(--fg-2)">A small private server you own, on your own Claude subscription, behind your own private network. Your email and records never pass through my systems. If we ever part ways, you keep everything.</p></div>
-      <div><h3>Approval is a setting, not a limit</h3><p style="color:var(--fg-2)">Every new job starts with you approving each action. When you trust it, you turn approval off for that job and it runs on its own. You decide how fast that happens.</p></div>
-      <div><h3>You never touch the technical side</h3><p style="color:var(--fg-2)">No terminal, no configuration files, no passwords sent to me. I will never ask you for one. You get a chat window and a phone that buzzes when something matters.</p></div>
-      <div><h3>It only uses the front door</h3><p style="color:var(--fg-2)">It connects to your services the way those companies allow. No tricks with your accounts, nothing that puts them at risk.</p></div>
+    <div class="stack">
+      <div class="eyebrow">See it work</div>
+      <h2>You talk to it like a person. It answers like one who was paying attention.</h2>
+      <div class="pt"><div class="dot"></div><p><b>Your phone buzzes only when it matters.</b> Deadlines, a hot reply, a quote ready to go. Not for every email.</p></div>
+      <div class="pt"><div class="dot"></div><p><b>Ask it anything about an account.</b> What did we quote them last time, what markup, who did we talk to, what did they say.</p></div>
+      <div class="pt"><div class="dot"></div><p><b>Tell it what to do in plain English.</b> No menus, no forms, no portal. It already knows your business.</p></div>
+      <p style="color:var(--ink-3);font-size:.95rem">Example conversation. Names and details are made up, the behavior is exact.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band lift" id="different">
+  <div class="wrap stack" style="gap:2.25rem">
+    <div>
+      <div class="eyebrow">Why it's not another app</div>
+      <h2>Software companies sell you a tool and leave.<br>This comes with an operator.</h2>
+      <p class="lede" style="margin-top:1rem">I build it, I watch it, and when it gets something wrong I write the rule so it never happens again. That loop is the product.</p>
+    </div>
+    <div class="owns">
+      <div class="own"><h3>Your own server</h3><p>A small private server you own, on your own Claude subscription, behind your own private network. Your records never pass through my systems. If we part ways, you keep everything.</p></div>
+      <div class="own"><h3>Approval is a setting</h3><p>Every new job starts with you approving each action. When you trust it, you switch approval off for that job and it runs on its own. You decide how fast.</p></div>
+      <div class="own"><h3>Nothing technical, ever</h3><p>No terminal, no configuration, no passwords sent to me. I will never ask you for one. You get a chat window and a phone that buzzes when it matters.</p></div>
+      <div class="own"><h3>Front door only</h3><p>It connects to your services the way those companies allow. Nothing that puts your accounts at risk.</p></div>
     </div>
   </div>
 </section>
 
 <section class="band" id="how">
-  <div class="wrap stack" style="gap:2rem">
-    <div class="stack" style="gap:.75rem">
-      <h2>How it starts</h2>
-      <p class="lede">Two weeks from the first call to an assistant that knows your business.</p>
+  <div class="wrap stack" style="gap:2.25rem">
+    <div>
+      <div class="eyebrow">How it starts</div>
+      <h2>Two weeks from the first call to an assistant that knows your business</h2>
     </div>
     <ol class="steps">
-      <li><h3>A 30-minute call</h3><p>You tell me how the business actually runs, what eats your day, and where you'd want it to check with you first. We decide which jobs come first.</p></li>
-      <li><h3>Your assistant interviews you</h3><p>I stand it up and it asks you the questions itself, in plain English. It writes its own understanding of your company, your people and your rules from that conversation. I review and shape it.</p></li>
-      <li><h3>Week one, setup</h3><p>Everything connected, the first jobs running, approval on for all of them. You start talking to it from your phone.</p></li>
-      <li><h3>Week two, dial-in</h3><p>Version one is always a little wrong. It learns who matters, what to flag and what to leave alone, and we tighten the rules together.</p></li>
-      <li><h3>Then it just runs</h3><p>Care covers the fixes, the new rule when something slips, and the changes as your business changes. One business day to hear back from me, usually much less.</p></li>
+      <li><small>30 minutes</small><h3>A call</h3><p>You tell me how the business actually runs, what eats your day, and where you want it to check with you first.</p></li>
+      <li><small>Day 2 or 3</small><h3>It interviews you</h3><p>I stand it up and it asks you the questions itself, in plain English, then writes its own understanding of your company. I review and shape it.</p></li>
+      <li><small>Week one</small><h3>Setup</h3><p>Everything connected, the first jobs running, approval on for all of them. You start talking to it from your phone.</p></li>
+      <li><small>Week two</small><h3>Dial-in</h3><p>Version one is always a little wrong. It learns who matters and what to flag, and we tighten the rules together.</p></li>
+      <li><small>Day 15 on</small><h3>It just runs</h3><p>Care covers the fixes, the new rule when something slips, and changes as your business changes. One business day to hear back from me.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="band alt" id="pricing">
-  <div class="wrap stack" style="gap:2rem">
-    <div class="stack" style="gap:.75rem">
-      <h2>Pricing</h2>
-      <p class="lede">Two ways in. Both are fixed prices, written down before any work starts.</p>
+<section class="band lift" id="pricing">
+  <div class="wrap stack" style="gap:2.25rem">
+    <div>
+      <div class="eyebrow">Pricing</div>
+      <h2>Fixed prices, written down before any work starts</h2>
     </div>
     <div class="plans">
       <div class="plan">
         <h3>Personal assistant</h3>
         <p class="price">$1,250<small>one-time setup, then $200 a month care from day 31</small></p>
-        <p style="color:var(--fg-2)">For one person: your inboxes, your calendars, your reminders, a morning rundown of the day. The first 30 days of tuning after go-live are included in setup.</p>
+        <p style="color:var(--ink-2)">For one person. Your inboxes, calendars and reminders, with a morning rundown of the day. Thirty days of tuning after go-live are included.</p>
         <ul>
-          <li>Setup in two weeks</li>
+          <li>Running in two weeks</li>
           <li>Care is month to month</li>
-          <li>Outside services billed to you directly: your Claude subscription at $100 a month and a private server at $8.99 a month, paid two years up front</li>
+          <li>No limit on how many of your apps get connected</li>
         </ul>
+        <p class="fine">Outside services you pay directly: your Claude subscription at $100 a month, and a private server at $8.99 a month paid two years up front.</p>
       </div>
       <div class="plan lead">
+        <span class="pill">The full system</span>
         <h3>Business operator</h3>
-        <p class="price">Quoted<small>fixed price after the call, before any work starts</small></p>
-        <p style="color:var(--fg-2)">The full system on this page: inbox, follow-ups, quoting, customer protection, recurring reports and the memory of your whole business, with me on call to run it.</p>
+        <p class="price">Quoted<small>a fixed price after the call, before any work starts</small></p>
+        <p style="color:var(--ink-2)">Everything on this page. Inbox, follow-ups, quoting, customer protection, recurring reports and the memory of your whole business, with me on call to run it.</p>
         <ul>
           <li>Scoped to the jobs that matter in your company</li>
           <li>Care priced for the hours it really takes</li>
-          <li>Same outside services, same ownership: your server, your accounts</li>
+          <li>Same ownership: your server, your accounts, your data</li>
         </ul>
+        <p class="fine">Same outside services. The written quote lists every cost, mine and theirs, so there is nothing hidden.</p>
       </div>
     </div>
-    <p class="note">No caps on how many of your apps get connected, and no surprise charges for the thing you remembered halfway through the build. My prices are firm. Prices from outside companies are theirs, current as of October 2026, and can change.</p>
+    <p class="note">My prices are firm. Prices from outside companies are theirs, current as of October 2026, and can change. No surprise charges for the thing you remembered halfway through the build.</p>
   </div>
 </section>
 
 <section class="band" id="about">
   <div class="wrap about">
-    <div class="stack">
-      <h2>Who's behind it</h2>
-      <p class="sig">Jake Jones</p>
+    <div class="card">
+      <div>
+        <div class="name">Jake Jones</div>
+        <div class="role">Builds and runs every assistant personally</div>
+      </div>
+      <div class="facts">
+        <div><span>Day job</span>Industrial equipment sales at my family's company</div>
+        <div><span>Where</span>Middle Tennessee</div>
+        <div><span>Running since</span>Spring 2026, on my own business first</div>
+        <div><span>Clients</span>A handful at a time, on purpose</div>
+      </div>
     </div>
-    <div class="stack measure">
-      <p>I sell industrial equipment for my family's company in Middle Tennessee. Presses, automation, the big iron that runs a stamping plant. It's a small team, I carry a sales territory, and for years the job was a hundred open loops and a phone that never stopped.</p>
-      <p>So I built the assistant on this page for myself. It has run my days since the spring of 2026. Every rule it follows came from something that slipped once: a quote that sat, a follow-up that went to someone who had already replied, a deadline I found too late. Each one became a rule it checks on every job, every time.</p>
-      <p>That's what you're paying for. Not the software, which is Claude and a server. The year of rules, and someone who keeps writing them.</p>
+    <div class="stack">
+      <div class="eyebrow">Who's behind it</div>
+      <p class="big">I didn't build this to sell it. I built it because I was the bottleneck in my own company.</p>
+      <p>I sell presses and automation for my family's industrial equipment company. Small team, a sales territory, and for years the job was a hundred open loops and a phone that never stopped. So I put an assistant on a server, connected it to everything, and taught it the rules of the business one miss at a time.</p>
+      <p>Every rule it follows today came from something that slipped once. A quote that sat. A follow-up that went to someone who had already replied. A deadline I found too late. Each one became a check it runs on every job, every time.</p>
+      <p>That is what you're paying for. Not the software, which is Claude and a server. The rules, and someone who keeps writing them.</p>
     </div>
   </div>
 </section>
 
-<section class="band alt">
+<section class="band lift">
   <div class="wrap stack" style="gap:2rem">
-    <h2>Questions owners ask</h2>
+    <div>
+      <div class="eyebrow">Questions owners ask</div>
+      <h2>Straight answers</h2>
+    </div>
     <div class="faq">
-      <details><summary>Which AI is it?</summary><p>Claude, made by Anthropic, running on a server you own and a subscription in your name. Your conversations and records are not used to train anyone's model when the setting is turned off, which I do on day one.</p></details>
-      <details><summary>Can it see my email?</summary><p>Yes, that's the job. It reads your mail on your server, in your account. I can only see what you choose to show me, and I will never ask you for a password.</p></details>
+      <details><summary>Which AI is it?</summary><p>Claude, made by Anthropic, running on a server you own with a subscription in your name. The setting that lets conversations train their models is turned off on day one.</p></details>
+      <details><summary>Can it see my email?</summary><p>Yes, that is the job. It reads your mail on your server, in your account. I only see what you choose to show me, and I will never ask you for a password.</p></details>
       <details><summary>Will it send things without asking?</summary><p>Not until you say so. Every job starts in approval mode. Most owners switch the routine jobs to run on their own within a few weeks and keep approval on for anything that goes to a customer.</p></details>
-      <details><summary>What does it connect to?</summary><p>Whatever you run the business on. Microsoft 365 or Google, your calendar, your CRM, your files, your chat app, your accounting. We connect what you have, and there is no limit on how many.</p></details>
+      <details><summary>What does it connect to?</summary><p>Whatever you run the business on. Microsoft 365 or Google, your calendar, your CRM, your files, your chat app, your accounting. There is no limit on how many.</p></details>
       <details><summary>What if I don't like it?</summary><p>Care is month to month. You own the server and the accounts, so if you stop, nothing disappears and nothing is held hostage.</p></details>
-      <details><summary>What happens when it gets something wrong?</summary><p>It will, especially in the first weeks. You tell me, I find out why, and I write the rule that stops it from happening again. That loop is the product.</p></details>
+      <details><summary>What happens when it gets something wrong?</summary><p>It will, especially in the first weeks. You tell me, I find out why, and I write the rule that stops it from happening again.</p></details>
       <details><summary>Where are you?</summary><p>Middle Tennessee. Everything on this page is done remotely, so where you are doesn't matter.</p></details>
     </div>
   </div>
 </section>
 
-<section class="band" id="contact">
-  <div class="wrap contact">
-    <h2>Start with a call</h2>
+<section class="band cta" id="contact">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow">Start with a call</div>
+    <h2>Tell me what keeps falling through.</h2>
     <p class="lede">Email me what your days look like and what you wish would just get handled. I'll reply within one business day with times for a 30-minute call. No pitch deck.</p>
     <p class="addr" id="addr">hello@nothingfallsthrough.com</p>
     <div class="btns">
@@ -305,20 +427,56 @@ footer.site{padding-block:2rem;border-top:1px solid var(--rule);font-size:.95rem
 
 <div class="wrap">
   <footer class="site">
-    <span>© 2026 Nothing Falls Through. Middle Tennessee.</span>
-    <span>Claude is a trademark of Anthropic. This is an independent service, not affiliated with Anthropic.</span>
+    <span>© 2026 Nothing Falls Through · Middle Tennessee</span>
+    <span>Claude is a trademark of Anthropic. Independent service, not affiliated with Anthropic.</span>
   </footer>
 </div>
 
 <script>
 (function(){
+  /* copy button */
   var b=document.getElementById('copybtn'),a=document.getElementById('addr');
-  if(!b||!a)return;
-  b.addEventListener('click',function(){
+  if(b&&a){b.addEventListener('click',function(){
     var t=a.textContent.trim();
     function done(){b.textContent='Copied';b.dataset.done='1';setTimeout(function(){b.textContent='Copy the address';b.dataset.done='0';},2000);}
     function fallback(){var r=document.createRange();r.selectNodeContents(a);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press copy';}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fallback);}else{fallback();}
-  });
+  });}
+
+  /* the net: things fall, the net catches them */
+  var c=document.getElementById('net'); if(!c) return;
+  var ctx=c.getContext('2d'), W=0,H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items=[], netY=0, t0=performance.now();
+  function size(){var r=c.parentElement.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);netY=H-Math.min(130,H*0.14);}
+  function spawn(){items.push({x:Math.random()*W,y:-10,vy:0.35+Math.random()*0.5,r:1.5+Math.random()*2,caught:0,born:performance.now()});}
+  function drawNet(now){
+    var cols=Math.max(8,Math.floor(W/90));
+    ctx.lineWidth=1;ctx.strokeStyle='rgba(242,179,61,0.14)';
+    for(var i=0;i<=cols;i++){var x=i*(W/cols);var sag=Math.sin((x/W)*Math.PI)*22;ctx.beginPath();ctx.moveTo(x,netY-40+sag*0.2);ctx.lineTo(x,H);ctx.stroke();}
+    ctx.strokeStyle='rgba(242,179,61,0.30)';ctx.lineWidth=1.5;ctx.beginPath();
+    for(var x=0;x<=W;x+=8){var sag=Math.sin((x/W)*Math.PI)*22+Math.sin(now/1400+x/120)*1.5;var y=netY+sag;x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.stroke();
+    ctx.strokeStyle='rgba(242,179,61,0.10)';ctx.lineWidth=1;
+    for(var k=1;k<=3;k++){ctx.beginPath();for(var x2=0;x2<=W;x2+=8){var sag2=Math.sin((x2/W)*Math.PI)*22*(1+k*0.15);var y2=netY+sag2+k*26;x2===0?ctx.moveTo(x2,y2):ctx.lineTo(x2,y2);}ctx.stroke();}
+  }
+  function frame(now){
+    ctx.clearRect(0,0,W,H);
+    drawNet(now);
+    if(!reduce&&Math.random()<0.035&&items.length<40) spawn();
+    for(var i=items.length-1;i>=0;i--){var p=items[i];
+      var sag=Math.sin((p.x/W)*Math.PI)*22;var ny=netY+sag;
+      if(!p.caught){p.y+=p.vy;if(p.y>=ny){p.caught=now;p.y=ny;}}
+      var age=p.caught?(now-p.caught):0;
+      var alpha=p.caught?Math.max(0,1-age/2600):0.75;
+      if(alpha<=0){items.splice(i,1);continue;}
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r+(p.caught?1.2:0),0,Math.PI*2);
+      ctx.fillStyle=p.caught?'rgba(61,220,151,'+alpha+')':'rgba(238,242,245,'+alpha*0.8+')';ctx.fill();
+      if(p.caught&&age<700){ctx.beginPath();ctx.arc(p.x,p.y,p.r+age/40,0,Math.PI*2);ctx.strokeStyle='rgba(61,220,151,'+(0.5*(1-age/700))+')';ctx.lineWidth=1;ctx.stroke();}
+    }
+    if(!reduce) requestAnimationFrame(frame);
+  }
+  size(); window.addEventListener('resize',size);
+  if(reduce){for(var j=0;j<12;j++){var x=Math.random()*W;items.push({x:x,y:netY+Math.sin((x/W)*Math.PI)*22,vy:0,r:2,caught:1,born:0});}frame(performance.now()+1);}
+  else{for(var j2=0;j2<10;j2++){spawn();items[items.length-1].y=Math.random()*netY;}requestAnimationFrame(frame);}
 })();
 </script>
