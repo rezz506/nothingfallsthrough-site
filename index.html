@@ -3,22 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="A managed AI assistant for small business owners. It watches your inbox, keeps follow-ups going, turns vendor quotes into customer quotes and puts deadlines on your phone. Runs on your own server, built and run for you by Jake Jones.">
+<meta name="description" content="An AI assistant for small business owners, set up and managed for you. It manages your email, keeps follow-ups going, drafts quotes and puts deadlines on your phone. Runs on your own private server with Claude AI. Fixed prices, no contracts. Built by a Tennessee business owner who runs his own company this way.">
 <link rel="canonical" href="https://nothingfallsthrough.com/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nothing Falls Through">
 <meta property="og:title" content="Nothing Falls Through">
-<meta property="og:description" content="A managed AI assistant for small business owners, on your own server, run for you by someone who runs his own company this way.">
+<meta property="og:description" content="An AI assistant for small business owners, set up and managed for you. Email, follow-ups, quotes and deadlines handled on your own private server.">
 <meta property="og:url" content="https://nothingfallsthrough.com/">
 <meta property="og:image" content="https://nothingfallsthrough.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0F6E56">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"Nothing Falls Through","url":"https://nothingfallsthrough.com/","email":"hello@nothingfallsthrough.com","description":"Managed AI assistant for small business owners: inbox, follow-ups, quoting, deadlines and recurring reports, running on the client's own server.","founder":{"@type":"Person","name":"Jake Jones"},"areaServed":"US","address":{"@type":"PostalAddress","addressRegion":"TN","addressCountry":"US"},"priceRange":"$1,250 setup and up","knowsAbout":["AI assistant for small business","managed AI assistant","Claude","business automation"]}
+{"@context":"https://schema.org","@graph":[
+{"@type":"ProfessionalService","@id":"https://nothingfallsthrough.com/#business","name":"Nothing Falls Through","url":"https://nothingfallsthrough.com/","email":"hello@nothingfallsthrough.com","description":"AI assistant setup and management for small business owners. Email management, follow-up automation, quoting, deadline alerts and recurring reports, running on the client's own private server with Claude AI.","founder":{"@type":"Person","name":"Jake Jones"},"areaServed":"US","address":{"@type":"PostalAddress","addressRegion":"TN","addressCountry":"US"},"priceRange":"$1,250 setup and up","knowsAbout":["AI assistant for small business","AI automation for small business","managed AI services","AI email assistant","follow-up automation","Claude AI setup","small business automation"]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is an AI assistant, in plain terms?","acceptedAnswer":{"@type":"Answer","text":"A program that can read, write and remember the way a capable person does, connected to your email, calendar and files so it can act on them. This one knows your business, keeps its memory, and has a person managing it."}},
+{"@type":"Question","name":"Which AI is it?","acceptedAnswer":{"@type":"Answer","text":"Claude, made by Anthropic, running on a server you own with a subscription in your name. The setting that lets conversations train their models is turned off on day one."}},
+{"@type":"Question","name":"Do I need to be good with computers?","acceptedAnswer":{"@type":"Answer","text":"No. If you can send a text message, you can use it. There is nothing to install and nothing to configure."}},
+{"@type":"Question","name":"What does it connect to?","acceptedAnswer":{"@type":"Answer","text":"Whatever you run the business on. Outlook or Gmail, Microsoft 365 or Google Workspace, your calendar, your CRM, QuickBooks, your files, your chat app."}},
+{"@type":"Question","name":"What if I don't like it?","acceptedAnswer":{"@type":"Answer","text":"Care is month to month. You own the server and the accounts, so if you stop, nothing disappears."}},
+{"@type":"Question","name":"Will it send things without asking?","acceptedAnswer":{"@type":"Answer","text":"Not until you say so. Every job starts in approval mode, and anything going to a customer should start with your approval."}}
+]}]}
 </script>
-<title>Nothing Falls Through | Managed AI assistant for small business owners</title>
+<title>Nothing Falls Through | AI Assistant for Small Business Owners, Set Up and Managed for You</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
@@ -31,8 +40,8 @@
   --panel-2:#1A2430;     /* hover / nested */
   --line:rgba(255,255,255,.09);
   --ink:#EEF2F5;
-  --ink-2:#A9B6C2;
-  --ink-3:#6E7D8B;
+  --ink-2:#C2CDD6;
+  --ink-3:#8A9AA8;
   --amber:#F2B33D;       /* the brand accent */
   --amber-ink:#1A1200;
   --mint:#3DDC97;        /* caught */
@@ -45,7 +54,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--ground)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:1.2rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
 h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;text-wrap:balance;letter-spacing:-0.02em}
@@ -57,10 +66,10 @@ p{margin:0}
 .band{padding-block:clamp(3.5rem,8vw,7rem);position:relative}
 .band.lift{background:var(--ground-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .eyebrow{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
-.lede{font-size:1.25rem;color:var(--ink-2);max-width:36em}
+.lede{font-size:1.32rem;color:var(--ink-2);max-width:34em;line-height:1.55}
 .measure{max-width:38em}
 .stack{display:grid;gap:1.25rem}
-.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--body);font-weight:600;font-size:1.05rem;text-decoration:none;padding:.85rem 1.3rem;border-radius:8px;border:1px solid transparent;background:var(--amber);color:var(--amber-ink);box-shadow:0 8px 24px -10px rgba(242,179,61,.6);transition:transform .15s ease,box-shadow .15s ease}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--body);font-weight:600;font-size:1.12rem;text-decoration:none;padding:.95rem 1.5rem;border-radius:8px;border:1px solid transparent;background:var(--amber);color:var(--amber-ink);box-shadow:0 8px 24px -10px rgba(242,179,61,.6);transition:transform .15s ease,box-shadow .15s ease}
 .btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px -10px rgba(242,179,61,.7)}
 .btn.ghost{background:rgba(255,255,255,.04);color:var(--ink);border-color:var(--line);box-shadow:none}
 .btn.ghost:hover{background:rgba(255,255,255,.07)}
@@ -100,7 +109,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(61,220,151,.55)}70%{box-shadow:0 0 0 .55rem rgba(61,220,151,0)}100%{box-shadow:0 0 0 0 rgba(61,220,151,0)}}
 @media (prefers-reduced-motion:reduce){.today .live i{animation:none}}
 .today ol{list-style:none;margin:0;padding:.4rem 0}
-.today li{display:grid;grid-template-columns:4.6em minmax(0,1fr) auto;gap:.8rem;padding:.75rem 1.1rem;align-items:start;font-size:.98rem;line-height:1.4}
+.today li{display:grid;grid-template-columns:5.4em minmax(0,1fr) auto;gap:.8rem;padding:.8rem 1.1rem;align-items:start;font-size:1.02rem;line-height:1.4}
 .today li+li{border-top:1px solid var(--line)}
 .today time{font-family:var(--mono);font-size:.8rem;color:var(--ink-3);padding-top:.2em;white-space:nowrap}
 .today .what{color:var(--ink-2)}
@@ -110,8 +119,25 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .tag.held{color:var(--amber);border-color:rgba(242,179,61,.4);background:rgba(242,179,61,.08)}
 .tag.phone{color:var(--rose);border-color:rgba(255,122,122,.4);background:rgba(255,122,122,.08)}
 .today footer{padding:.75rem 1.1rem;font-size:.85rem;color:var(--ink-3);border-top:1px solid var(--line);background:rgba(0,0,0,.18)}
-@media (max-width:420px){.today li{grid-template-columns:4em minmax(0,1fr);}.today .tag{grid-column:2;justify-self:start}}
+@media (max-width:420px){.today li{grid-template-columns:4.8em minmax(0,1fr);}.today .tag{grid-column:2;justify-self:start}}
 
+/* plain english strip */
+.plain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media (max-width:860px){.plain{grid-template-columns:1fr}}
+.plain div{display:grid;gap:.5rem;padding:1.3rem;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025)}
+.plain b{font-family:var(--display);font-size:1.2rem;font-weight:700}
+.plain p{color:var(--ink-2);font-size:1.08rem}
+/* who it's for */
+.who{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem)}
+@media (max-width:860px){.who{grid-template-columns:1fr}}
+.inds{display:flex;flex-wrap:wrap;gap:.6rem;margin:0;padding:0;list-style:none}
+.inds li{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:.5rem .95rem;font-size:1.02rem;color:var(--ink)}
+.notfor{border-left:3px solid var(--rose);padding-left:1rem;color:var(--ink-2);font-size:1.08rem;display:grid;gap:.5rem}
+.trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:1.4rem}
+@media (max-width:900px){.trust{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.trust div{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;font-size:1.05rem;color:var(--ink-2)}
+.trust svg{width:22px;height:22px;color:var(--mint);flex:none;margin-top:.15rem}
+.trust b{color:var(--ink);display:block}
 /* pains */
 .pains{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:0;padding:0;list-style:none}
 @media (max-width:720px){.pains{grid-template-columns:1fr}}
@@ -126,7 +152,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .feat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.35rem;display:grid;gap:.8rem;align-content:start;min-width:0}
 .feat .ic{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:rgba(242,179,61,.1);border:1px solid rgba(242,179,61,.3);color:var(--amber)}
 .feat .ic svg{width:22px;height:22px}
-.feat p{color:var(--ink-2);font-size:1rem}
+.feat p{color:var(--ink-2);font-size:1.08rem}
 
 /* see it work */
 .work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:center}
@@ -156,7 +182,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:960px){.owns{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.owns{grid-template-columns:1fr}}
 .own{border-top:2px solid var(--amber);padding-top:1rem;display:grid;gap:.5rem;align-content:start}
-.own p{color:var(--ink-2);font-size:1rem}
+.own p{color:var(--ink-2);font-size:1.08rem}
 
 /* steps */
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;counter-reset:s}
@@ -165,7 +191,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .steps li{counter-increment:s;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.2rem;display:grid;gap:.6rem;align-content:start;position:relative;min-width:0}
 .steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;color:var(--amber)}
 .steps li small{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
-.steps p{color:var(--ink-2);font-size:.98rem}
+.steps p{color:var(--ink-2);font-size:1.05rem}
 
 /* pricing */
 .plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;align-items:stretch}
@@ -197,11 +223,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .faq{display:grid;gap:.6rem}
 .faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0 1.2rem}
 .faq details[open]{border-color:rgba(242,179,61,.4)}
-.faq summary{cursor:pointer;list-style:none;padding-block:1rem;font-family:var(--display);font-weight:700;font-size:1.08rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary{cursor:pointer;list-style:none;padding-block:1.1rem;font-family:var(--display);font-weight:700;font-size:1.15rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";font-weight:500;font-size:1.5rem;color:var(--amber);flex:none;line-height:1}
 .faq details[open] summary::after{content:"–"}
-.faq details p{color:var(--ink-2);max-width:42em;padding-bottom:1.1rem;font-size:1.02rem}
+.faq details p{color:var(--ink-2);max-width:42em;padding-bottom:1.1rem;font-size:1.1rem}
 
 /* contact */
 .cta{position:relative;overflow:hidden;border-top:1px solid var(--line)}
@@ -237,76 +263,96 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
 <body>
 <div class="wrap">
     <div class="stack">
-      <div class="eyebrow">Managed AI assistant for small business owners</div>
+      <div class="eyebrow">AI assistant for small business owners, set up and managed for you</div>
       <h1>Nothing falls <span class="fall">through.</span></h1>
-      <p class="lede">An assistant that lives inside your business and works it every day. It reads what comes in, keeps the follow-ups going, drafts the quotes, and puts the things that can't wait on your phone. I build it on your own server and I keep it running.</p>
+      <p class="lede">You've run your business for years. You know exactly what needs to happen every day. There just isn't enough of you to do it all. This is an AI assistant that reads your email, keeps your follow-ups going, drafts your quotes and puts the urgent things on your phone. I set it up for you, and I keep it running.</p>
       <div class="btns">
-        <a class="btn" href="#contact">Book a 30-minute call</a>
-        <a class="btn ghost" href="#work">See it work</a>
+        <a class="btn" href="#contact">Book a free 30-minute call</a>
+        <a class="btn ghost" href="#plain">What is this, exactly?</a>
       </div>
-      <p class="who">Built for owners who are also the salesperson, the quoter and the one who answers the email. Trades, shops, distributors, studios, service companies.</p>
+      <p class="who">For owners who are also the salesperson, the estimator and the one who answers the email. Contractors, machine shops, distributors, dealers, service companies and professional offices.</p>
     </div>
 
     <aside class="today" aria-label="What the assistant caught in one day, from my own company">
       <header><b>Today</b><span class="live"><i></i>assistant on duty</span></header>
       <ol>
-        <li><time>6:52</time><span class="what"><b>Morning brief sent.</b> Three open quotes need an answer this week. One expires Friday.</span><span class="tag ok">done</span></li>
-        <li><time>8:05</time><span class="what"><b>14 prospect emails out.</b> Every name checked against the customer list first.</span><span class="tag ok">done</span></li>
-        <li><time>9:40</time><span class="what"><b>Vendor quote arrived.</b> Marked up in the house format, customer quote in Drafts by 10:15.</span><span class="tag ok">done</span></li>
-        <li><time>11:02</time><span class="what"><b>Customer replied.</b> Tomorrow's automatic follow-up to him was cancelled.</span><span class="tag held">held</span></li>
-        <li><time>1:30</time><span class="what"><b>"Need an answer by Friday"</b> found in an email. Sent to the owner's phone.</span><span class="tag phone">alert</span></li>
-        <li><time>4:45</time><span class="what"><b>Expense report drafted</b> from the card statement. Due on the 1st.</span><span class="tag ok">done</span></li>
+        <li><time>6:52 AM</time><span class="what"><b>Morning brief sent.</b> Three open quotes need an answer this week. One expires Friday.</span><span class="tag ok">done</span></li>
+        <li><time>8:05 AM</time><span class="what"><b>14 follow-up emails out.</b> Every name checked against the customer list first.</span><span class="tag ok">done</span></li>
+        <li><time>9:40 AM</time><span class="what"><b>Supplier's price arrived.</b> Customer quote built in the house format, in Drafts by 10:15.</span><span class="tag ok">done</span></li>
+        <li><time>11:02 AM</time><span class="what"><b>Customer replied.</b> Tomorrow's automatic follow-up to him was cancelled.</span><span class="tag held">held</span></li>
+        <li><time>1:30 PM</time><span class="what"><b>"Need an answer by Friday"</b> found in an email. Sent to the owner's phone.</span><span class="tag phone">alert</span></li>
+        <li><time>4:45 PM</time><span class="what"><b>Expense report drafted</b> from the card statement. Due on the 1st.</span><span class="tag ok">done</span></li>
       </ol>
       <footer>A real day from the assistant that runs my own company. Names changed, jobs exact.</footer>
     </aside>
   </div>
 </section>
 
-<section class="band">
+<section class="band" id="plain">
+  <div class="wrap stack" style="gap:2rem">
+    <div>
+      <div class="eyebrow">In plain English</div>
+      <h2>What you're actually getting</h2>
+    </div>
+    <div class="plain">
+      <div><b>An assistant, not an app</b><p>Think of a sharp office assistant who reads everything that comes in, remembers everything you've ever told them, and reminds you before it's too late. It runs on Claude, one of the leading AI systems, trained on how your business works.</p></div>
+      <div><b>Your own private server</b><p>It lives on a small computer in a secure data center that you own, connected to the email, calendar and software you already use. Outlook, Gmail, Microsoft 365, Google Workspace, QuickBooks, your CRM. Your information stays yours.</p></div>
+      <div><b>A person who manages it</b><p>That's me. I built this for my own family's company first. I set yours up, teach it your rules, watch it, and fix it when it gets something wrong. You never touch the technical side.</p></div>
+    </div>
+    <div class="trust">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Nothing to learn</b>You talk to it in plain English, from your phone.</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>No contracts</b>Monthly care you can stop any time.</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Fixed prices</b>Written down before any work starts.</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>A real person</b>One business day to hear back from me, usually faster.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band lift">
   <div class="wrap stack" style="gap:2rem">
     <div>
       <div class="eyebrow">You know the feeling</div>
       <h2>Nobody dropped the ball on purpose.<br>There were just more balls than hands.</h2>
     </div>
     <ul class="pains">
-      <li>The quote you meant to send Monday went out Thursday.<small>They had bought elsewhere by Wednesday.</small></li>
-      <li>The supplier answered a week ago.<small>The customer is still waiting on you.</small></li>
+      <li>The quote you meant to send Monday went out Thursday.<small>They had bought from someone else by Wednesday.</small></li>
+      <li>The supplier answered a week ago.<small>The customer is still waiting to hear from you.</small></li>
       <li>"Can you get back to me by Friday?"<small>Sat on page three of the inbox until Saturday.</small></li>
       <li>The follow-up you promised yourself.<small>Never happened, because the next fire did.</small></li>
     </ul>
   </div>
 </section>
 
-<section class="band lift" id="does">
+<section class="band" id="does">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
       <div class="eyebrow">What it does</div>
-      <h2>The jobs it runs every day</h2>
-      <p class="lede" style="margin-top:1rem">These run inside my company right now. Yours gets the ones that fit how you work, and we add more as you trust it.</p>
+      <h2>The jobs it handles every day</h2>
+      <p class="lede" style="margin-top:1rem">These run inside my company right now. Yours gets the ones that fit how you work, and we add more as you come to trust it.</p>
     </div>
     <div class="feats">
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>Watches the inbox</h3><p>Sorts the noise from the money and flags anything with a date in it. A request with a deadline is an alert on your phone the same hour.</p></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 4v5h5"/></svg></div><h3>Keeps follow-ups going</h3><p>A steady number of touches every day on the schedule you set. It stops the moment someone replies, so nobody gets a canned follow-up after they wrote back.</p></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg></div><h3>Turns vendor quotes into customer quotes</h3><p>When a supplier's price lands, it builds your quote in your format with your markup and puts it in Drafts, ready to send the same day.</p></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Protects your relationships</h3><p>It knows who your customers are and never treats one like a stranger. Existing accounts stay out of every automated list unless you release them.</p></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><h3>Does the recurring paperwork</h3><p>Expense reports, weekly activity summaries, the Monday numbers for the team. Drafted on time from the real records, without being asked twice.</p></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a7 7 0 0 0-4 12.7V18a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.3A7 7 0 0 0 12 3z"/><path d="M10 22h4"/></svg></div><h3>Remembers everything</h3><p>Every promise, markup, plant visit and "never contact that supplier again" lives in its memory on your server. Ask about any account and get the answer, not a search.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>Manages your email</h3><p>Sorts the noise from the money and flags anything with a date in it. A request with a deadline becomes an alert on your phone the same hour, not a surprise next week.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 4v5h5"/></svg></div><h3>Keeps follow-ups going</h3><p>A steady number of follow-ups every day, on the schedule you set, to the prospects you choose. It stops the moment someone replies, so nobody gets a form letter after they already wrote back.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg></div><h3>Drafts your quotes and estimates</h3><p>When a supplier's price lands, it builds your customer quote in your own format with your usual markup and puts it in Drafts, ready for you to send the same day.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Protects your customer relationships</h3><p>It knows who your customers are and never treats one like a stranger. Existing accounts stay out of every automated list unless you say otherwise.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><h3>Does the recurring paperwork</h3><p>Expense reports, weekly activity summaries, the Monday numbers for the team, the reminder that the report is due on the 1st. Drafted on time from the real records.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a7 7 0 0 0-4 12.7V18a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.3A7 7 0 0 0 12 3z"/><path d="M10 22h4"/></svg></div><h3>Remembers everything</h3><p>Every promise, price, visit and "never call that supplier again" is kept in its memory on your server. Ask about any customer and get the answer, not a search.</p></div>
     </div>
   </div>
 </section>
 
-<section class="band" id="work">
+<section class="band lift" id="work">
   <div class="wrap work">
     <div class="phone" aria-label="Example of the assistant on a phone">
       <div class="screen">
         <div class="clock">1:31</div>
         <div class="date">Tuesday</div>
-        <div class="alert"><div class="ap">N</div><div><b>Deadline in an email</b><span>Mike at the plant needs a yes or no on the spare parts by Friday. Thread is in your inbox.</span></div><time>now</time></div>
-        <div class="alert"><div class="ap m">N</div><div><b>Quote ready to send</b><span>Customer quote for the conveyor drive is in Drafts. Vendor cost plus your usual markup.</span></div><time>9:41</time></div>
+        <div class="alert"><div class="ap">N</div><div><b>Deadline in an email</b><span>Mike at the plant needs a yes or no on the spare parts by Friday. The thread is in your inbox.</span></div><time>now</time></div>
+        <div class="alert"><div class="ap m">N</div><div><b>Quote ready to send</b><span>The customer quote for the conveyor drive is in Drafts. Supplier cost plus your usual markup.</span></div><time>9:41</time></div>
         <div class="chat">
-          <div class="msg me">did the conveyor quote go out?</div>
-          <div class="msg it">Not yet. It's in your Drafts since 9:41, waiting on you. Want me to send it?</div>
-          <div class="msg me">send it. and remind me friday morning about mike</div>
+          <div class="msg me">Did the conveyor quote go out?</div>
+          <div class="msg it">Not yet. It has been in your Drafts since 9:41, waiting on you. Want me to send it?</div>
+          <div class="msg me">Send it. And remind me Friday morning about Mike.</div>
           <div class="msg it">Sent at 1:32. Friday 7:30 AM reminder set for Mike's spare parts decision.</div>
         </div>
       </div>
@@ -314,10 +360,31 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
     <div class="stack">
       <div class="eyebrow">See it work</div>
       <h2>You talk to it like a person. It answers like one who was paying attention.</h2>
-      <div class="pt"><div class="dot"></div><p><b>Your phone buzzes only when it matters.</b> Deadlines, a hot reply, a quote ready to go. Not for every email.</p></div>
-      <div class="pt"><div class="dot"></div><p><b>Ask it anything about an account.</b> What did we quote them last time, what markup, who did we talk to, what did they say.</p></div>
-      <div class="pt"><div class="dot"></div><p><b>Tell it what to do in plain English.</b> No menus, no forms, no portal. It already knows your business.</p></div>
-      <p style="color:var(--ink-3);font-size:.95rem">Example conversation. Names and details are made up, the behavior is exact.</p>
+      <div class="pt"><div class="dot"></div><p><b>Your phone buzzes only when it matters.</b> A deadline, a hot reply, a quote ready to go. Not for every email.</p></div>
+      <div class="pt"><div class="dot"></div><p><b>Ask it anything about a customer.</b> What did we quote them last time, at what price, who did we talk to, what did they say.</p></div>
+      <div class="pt"><div class="dot"></div><p><b>Tell it what to do in plain English.</b> No menus, no forms, no new software to learn. It already knows your business.</p></div>
+      <p style="color:var(--ink-3);font-size:1rem">Example conversation. The names are made up, the behavior is exact.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="for">
+  <div class="wrap who">
+    <div class="stack">
+      <div class="eyebrow">Who it's for</div>
+      <h2>Small businesses where the owner is still the engine</h2>
+      <p style="color:var(--ink-2)">Companies of roughly five to fifty people, where the owner sells, quotes, and answers the email on top of running the place. If your days are email, follow-ups, pricing and promises, this was built for you.</p>
+      <ul class="inds">
+        <li>Contractors and trades</li><li>Machine shops and manufacturers</li><li>Equipment dealers and distributors</li><li>Industrial sales reps</li><li>Service companies</li><li>Real estate and insurance offices</li><li>Consultants and small agencies</li><li>Studios and family businesses</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3 style="font-size:1.4rem">Who it's not for</h3>
+      <div class="notfor">
+        <p>Anyone hoping to replace their staff. It makes the people you have, starting with you, far harder to overwhelm. It does not run the company.</p>
+        <p>Anyone who wants it to send everything without ever looking. It can earn that trust on routine jobs, but anything going to a customer should start with your approval.</p>
+        <p>Businesses that need it to work around another company's rules. It uses the front door of every service it connects to, or it doesn't connect.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -325,15 +392,15 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
 <section class="band lift" id="different">
   <div class="wrap stack" style="gap:2.25rem">
     <div>
-      <div class="eyebrow">Why it's not another app</div>
-      <h2>Software companies sell you a tool and leave.<br>This comes with an operator.</h2>
-      <p class="lede" style="margin-top:1rem">I build it, I watch it, and when it gets something wrong I write the rule so it never happens again. That loop is the product.</p>
+      <div class="eyebrow">Why it's not another piece of software</div>
+      <h2>Software companies sell you a tool and leave.<br>This comes with someone who runs it.</h2>
+      <p class="lede" style="margin-top:1rem">I build it, I watch it, and when it gets something wrong I write the rule so it never happens again. That is the service.</p>
     </div>
     <div class="owns">
-      <div class="own"><h3>Your own server</h3><p>A small private server you own, on your own Claude subscription, behind your own private network. Your records never pass through my systems. If we part ways, you keep everything.</p></div>
-      <div class="own"><h3>Approval is a setting</h3><p>Every new job starts with you approving each action. When you trust it, you switch approval off for that job and it runs on its own. You decide how fast.</p></div>
-      <div class="own"><h3>Nothing technical, ever</h3><p>No terminal, no configuration, no passwords sent to me. I will never ask you for one. You get a chat window and a phone that buzzes when it matters.</p></div>
-      <div class="own"><h3>Front door only</h3><p>It connects to your services the way those companies allow. Nothing that puts your accounts at risk.</p></div>
+      <div class="own"><h3>You own it</h3><p>A small private server in your name, your own Claude subscription, your own private network. Your records never pass through my systems. If we ever part ways, you keep everything.</p></div>
+      <div class="own"><h3>You approve, until you don't need to</h3><p>Every new job starts with you approving each action. When you trust it, you switch approval off for that job and it runs on its own. You decide how fast.</p></div>
+      <div class="own"><h3>Nothing technical, ever</h3><p>No computer setup, no configuration, no passwords sent to me. I will never ask you for one. You get a chat window on your phone and a buzz when something matters.</p></div>
+      <div class="own"><h3>Your data stays private</h3><p>Your conversations are not used to train anyone's AI. That setting is turned off on day one, and everything the assistant knows lives on your server, not in the cloud of some startup.</p></div>
     </div>
   </div>
 </section>
@@ -345,11 +412,11 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
       <h2>Two weeks from the first call to an assistant that knows your business</h2>
     </div>
     <ol class="steps">
-      <li><small>30 minutes</small><h3>A call</h3><p>You tell me how the business actually runs, what eats your day, and where you want it to check with you first.</p></li>
-      <li><small>Day 2 or 3</small><h3>It interviews you</h3><p>I stand it up and it asks you the questions itself, in plain English, then writes its own understanding of your company. I review and shape it.</p></li>
+      <li><small>30 minutes</small><h3>A phone call</h3><p>You tell me how the business actually runs, what eats your day, and where you want it to check with you first. No preparation needed.</p></li>
+      <li><small>Day 2 or 3</small><h3>It interviews you</h3><p>I set it up and it asks you the questions itself, in plain English, then writes its own understanding of your company. I review and shape it.</p></li>
       <li><small>Week one</small><h3>Setup</h3><p>Everything connected, the first jobs running, approval on for all of them. You start talking to it from your phone.</p></li>
       <li><small>Week two</small><h3>Dial-in</h3><p>Version one is always a little wrong. It learns who matters and what to flag, and we tighten the rules together.</p></li>
-      <li><small>Day 15 on</small><h3>It just runs</h3><p>Care covers the fixes, the new rule when something slips, and changes as your business changes. One business day to hear back from me.</p></li>
+      <li><small>Day 15 on</small><h3>It just runs</h3><p>Monthly care covers the fixes, the new rule when something slips, and changes as your business changes.</p></li>
     </ol>
   </div>
 </section>
@@ -359,24 +426,25 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
     <div>
       <div class="eyebrow">Pricing</div>
       <h2>Fixed prices, written down before any work starts</h2>
+      <p class="lede" style="margin-top:1rem">No contracts, no surprise charges, no hourly meter running. My fee and every outside cost are listed in your quote.</p>
     </div>
     <div class="plans">
       <div class="plan">
         <h3>Personal assistant</h3>
         <p class="price">$1,250<small>one-time setup, then $200 a month care from day 31</small></p>
-        <p style="color:var(--ink-2)">For one person. Your inboxes, calendars and reminders, with a morning rundown of the day. Thirty days of tuning after go-live are included.</p>
+        <p style="color:var(--ink-2)">For one person. Your inboxes, calendars and reminders, with a morning rundown of your day. The first 30 days of tuning after go-live are included.</p>
         <ul>
           <li>Running in two weeks</li>
-          <li>Care is month to month</li>
+          <li>Care is month to month, stop any time</li>
           <li>No limit on how many of your apps get connected</li>
         </ul>
         <p class="fine">Outside services you pay directly: your Claude subscription at $100 a month, and a private server at $8.99 a month paid two years up front.</p>
       </div>
       <div class="plan lead">
         <span class="pill">The full system</span>
-        <h3>Business operator</h3>
-        <p class="price">Quoted<small>a fixed price after the call, before any work starts</small></p>
-        <p style="color:var(--ink-2)">Everything on this page. Inbox, follow-ups, quoting, customer protection, recurring reports and the memory of your whole business, with me on call to run it.</p>
+        <h3>Business assistant</h3>
+        <p class="price">Quoted<small>a fixed price after our call, before any work starts</small></p>
+        <p style="color:var(--ink-2)">Everything on this page. Email, follow-ups, quoting, customer protection, recurring reports and the memory of your whole business, with me on call to run it.</p>
         <ul>
           <li>Scoped to the jobs that matter in your company</li>
           <li>Care priced for the hours it really takes</li>
@@ -385,7 +453,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
         <p class="fine">Same outside services. The written quote lists every cost, mine and theirs, so there is nothing hidden.</p>
       </div>
     </div>
-    <p class="note">My prices are firm. Prices from outside companies are theirs, current as of October 2026, and can change. No surprise charges for the thing you remembered halfway through the build.</p>
+    <p class="note">My prices are firm. Prices from outside companies are theirs, current as of October 2026, and can change. If you remember something halfway through the build, it goes in. No extra charge.</p>
   </div>
 </section>
 
@@ -420,10 +488,12 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
       <h2>Straight answers</h2>
     </div>
     <div class="faq">
+      <details><summary>What is an AI assistant, in plain terms?</summary><p>A program that can read, write and remember the way a capable person does, connected to your email, calendar and files so it can act on them. The difference between this and the chatbots you've seen is that this one knows your business, keeps its memory, and has a person managing it.</p></details>
       <details><summary>Which AI is it?</summary><p>Claude, made by Anthropic, running on a server you own with a subscription in your name. The setting that lets conversations train their models is turned off on day one.</p></details>
       <details><summary>Can it see my email?</summary><p>Yes, that is the job. It reads your mail on your server, in your account. I only see what you choose to show me, and I will never ask you for a password.</p></details>
       <details><summary>Will it send things without asking?</summary><p>Not until you say so. Every job starts in approval mode. Most owners switch the routine jobs to run on their own within a few weeks and keep approval on for anything that goes to a customer.</p></details>
-      <details><summary>What does it connect to?</summary><p>Whatever you run the business on. Microsoft 365 or Google, your calendar, your CRM, your files, your chat app, your accounting. There is no limit on how many.</p></details>
+      <details><summary>Do I need to be good with computers?</summary><p>No. If you can send a text message, you can use it. There is nothing to install on your computer and nothing to configure. I handle all of that.</p></details>
+      <details><summary>What does it connect to?</summary><p>Whatever you run the business on. Outlook or Gmail, Microsoft 365 or Google Workspace, your calendar, your CRM, QuickBooks, your files, your chat app. There is no limit on how many.</p></details>
       <details><summary>What if I don't like it?</summary><p>Care is month to month. You own the server and the accounts, so if you stop, nothing disappears and nothing is held hostage.</p></details>
       <details><summary>What happens when it gets something wrong?</summary><p>It will, especially in the first weeks. You tell me, I find out why, and I write the rule that stops it from happening again.</p></details>
       <details><summary>Where are you?</summary><p>Middle Tennessee. Everything on this page is done remotely, so where you are doesn't matter.</p></details>
@@ -436,7 +506,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
   <div class="wrap">
     <div class="eyebrow">Start with a call</div>
     <h2>Tell me what keeps falling through.</h2>
-    <p class="lede">Email me what your days look like and what you wish would just get handled. I'll reply within one business day with times for a 30-minute call. No pitch deck.</p>
+    <p class="lede">Email me what your days look like and what you wish would just get handled. I'll reply within one business day with times for a free 30-minute call. If you'd rather talk, include your number and I'll call you.</p>
     <p class="addr" id="addr">hello@nothingfallsthrough.com</p>
     <div class="btns">
       <a class="btn" href="mailto:hello@nothingfallsthrough.com?subject=A%2030-minute%20call">Email Jake</a>
@@ -448,7 +518,7 @@ footer.site{padding-block:2rem;border-top:1px solid var(--line);font-size:.92rem
 
 <div class="wrap">
   <footer class="site">
-    <span>© 2026 Nothing Falls Through · Middle Tennessee</span>
+    <span>© 2026 Nothing Falls Through · Middle Tennessee · AI assistant setup and management for small businesses</span>
     <span>Claude is a trademark of Anthropic. Independent service, not affiliated with Anthropic.</span>
   </footer>
 </div>
